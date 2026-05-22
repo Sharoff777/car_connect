@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CarConnect.lk — Sell Your Vehicle Faster & Smarter</title>
+<link rel="stylesheet" href="style.css">
+<script src="script.js"></script>
+<meta name="description" content="Sri Lanka's premium automotive marketplace. Sell your vehicle fast with CarConnect.lk">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800;900&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+         <div class="nav-logo-div">
+      <a href="#" class="nav-logo" onclick="showPage('home')">
+        <img src="Images/logo.png" alt="CarConnect.lk">
+      </a>
+      </div>
+      <div class="nav-links">
+        <a href="#" onclick="showPage('home')" class="active" id="nav-home">Home</a>
+        <a href="#" onclick="showPage('sell')" id="nav-sell">Sell With Us</a>
+        <a href="#" onclick="showPage('inventory')" id="nav-inventory">Inventory</a>
+        <a href="#" onclick="scrollToContact()">Contact</a>
+      </div>
+      <div class="nav-cta">
+        <a href="tel:+94777150066" class="nav-phone">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 012 1.18 2 2 0 014 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92v2z"/></svg>
+          +94 777 150 066
+        </a>
+        <a href="#" onclick="showPage('sell')" class="btn btn-primary btn-sm" style="padding:10px 20px;font-size:12px">Sell My Car</a>
+      </div>
+      <div class="hamburger" onclick="toggleMobileNav()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobile-nav">
+  <button class="mobile-close" onclick="toggleMobileNav()">✕</button>
+  <a href="#" onclick="showPage('home');toggleMobileNav()">Home</a>
+  <a href="#" onclick="showPage('sell');toggleMobileNav()">Sell With Us</a>
+  <a href="#" onclick="showPage('inventory');toggleMobileNav()">Inventory</a>
+  <a href="#" onclick="scrollToContact();toggleMobileNav()">Contact</a>
+  <a href="#" onclick="showPage('sell');toggleMobileNav()" class="btn btn-primary btn-lg" style="margin-top:16px">Sell My Car Free</a>
+</div>
+
+<!-- ===== HOME PAGE ===== -->
+<div id="page-home" class="page-section active">
+
+<!-- HERO -->
+<section id="home" style="min-height:100vh;background:var(--navy);position:relative;display:flex;align-items:center;overflow:hidden">
+  <div class="hero-bg"></div>
+  <div class="hero-car-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="container" style="position:relative;z-index:2;padding-top:100px;padding-bottom:80px">
+    <div class="hero-content">
+      <div class="hero-badge anim-in anim-in-1">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        Sri Lanka's #1 Premium Auto Marketplace
+      </div>
+      <h1 class="hero-title anim-in anim-in-2">
+        We Help You Sell Your Vehicle
+        <em>Faster & Smarter</em>
+      </h1>
+      <p class="hero-subtitle anim-in anim-in-3">Join thousands of Sri Lankans who trusted CarConnect.lk to get the best price for their vehicle — in days, not months. Premium buyers, zero hassle.</p>
+      <div class="hero-actions anim-in anim-in-4">
+        <a href="#" onclick="showPage('sell')" class="btn btn-primary btn-lg">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2v20M2 12l10-10 10 10"/></svg>
+          Sell Your Car Now
+        </a>
+        <a href="#" onclick="showPage('inventory')" class="btn btn-white btn-lg">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          Browse Inventory
+        </a>
+        <a href="https://wa.me/+94777150066?text=Hello%20CarConnect%2C%20I%20need%20help" target="_blank" class="btn btn-lg" style="background:rgba(37,211,102,0.15);border:1px solid rgba(37,211,102,0.3);color:#25D366">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp Us
+        </a>
+      </div>
+      <div class="hero-stats anim-in anim-in-4">
+        <div class="hero-stat">
+          <div class="num" data-count="100">0</div>
+          <div class="lbl">Vehicles Sold</div>
+        </div>
+        <div class="hero-divider"></div>
+        <div class="hero-stat">
+          <div class="num" data-count="95">0</div>
+          <div class="lbl">% Customer Satisfaction</div>
+        </div>
+        <div class="hero-divider"></div>
+        <div class="hero-stat">
+          <div class="num" data-days>7</div>
+          <div class="lbl">Days Avg. Sale Time</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span></span>
+    Scroll
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="container">
+    <div class="trust-items">
+      <div class="trust-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        100% Safe & Secure Transactions
+      </div>
+      <div class="trust-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Sell in as Fast as 7 Days
+      </div>
+      <div class="trust-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        Verified Buyer Network
+      </div>
+      <div class="trust-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+        Best Market Price Guaranteed
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY CHOOSE US -->
+<section class="section section-gray">
+  <div class="container">
+    <div class="why-header fade-up">
+      <div class="section-tag">Why CarConnect.lk</div>
+      <h2 class="section-title">Sri Lanka's Most Trusted<br><span>Auto Sales Platform</span></h2>
+      <p class="section-sub">We don't just list your car — we actively market it to thousands of serious buyers, negotiate on your behalf, and handle everything from inspection to paperwork.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card fade-up delay-1">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+        <h3>Lightning-Fast Sales</h3>
+        <p>Our active buyer network means your vehicle gets seen by serious buyers immediately. Average sale time is just 7 days — not 3 months.</p>
+      </div>
+      <div class="feature-card fade-up delay-2">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3>100% Trusted Process</h3>
+        <p>Every transaction is verified and secure. We vet all buyers, handle legal paperwork, and ensure you get paid safely — zero risk to you.</p>
+      </div>
+      <div class="feature-card fade-up delay-3">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+        <h3>Maximum Market Value</h3>
+        <p>We provide professional vehicle valuation and market your car competitively to ensure you always get the best possible price in the market.</p>
+      </div>
+      <div class="feature-card fade-up delay-1">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+        <h3>500+ Buyer Network</h3>
+        <p>Access to our exclusive database of pre-qualified, serious buyers who are actively searching for vehicles like yours right now.</p>
+      </div>
+      <div class="feature-card fade-up delay-2">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+        <h3>Premium Marketing</h3>
+        <p>Professional photography, compelling listings, and multi-platform advertising ensure maximum visibility for your vehicle across all channels.</p>
+      </div>
+      <div class="feature-card fade-up delay-3">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <h3>Zero Stress, Done For You</h3>
+        <p>From valuation to handover, our dedicated team handles everything. You just wait for the money — we do all the hard work for you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3-STEP PROCESS -->
+<section class="process-section">
+  <div class="container">
+    <div class="process-header fade-up">
+      <div class="section-tag">Sell in 3 Steps</div>
+      <h2 class="section-title">So Simple, It Feels<br>Like Magic</h2>
+      <p class="section-sub">Forget the stress of private selling. Our streamlined 3-step process gets your vehicle sold fast, at the right price, with zero hassle.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card fade-up delay-1">
+        <div class="step-num">01</div>
+        <h3>Submit Your Vehicle</h3>
+        <p>Fill in our quick online form with your vehicle details and photos. Takes less than 3 minutes — and it's completely free.</p>
+      </div>
+      <div class="step-card fade-up delay-2">
+        <div class="step-num">02</div>
+        <h3>We Inspect & Value It</h3>
+        <p>Our expert team visits you, conducts a professional inspection, and gives you a fair market valuation — no obligation to sell.</p>
+      </div>
+      <div class="step-card fade-up delay-3">
+        <div class="step-num">03</div>
+        <h3>Get Paid Fast</h3>
+        <p>We connect you with the right buyer, handle all negotiations and paperwork, and ensure you receive payment safely and quickly.</p>
+      </div>
+    </div>
+    <div class="process-cta fade-up">
+      <a href="#" onclick="showPage('sell')" class="btn btn-primary btn-lg">
+        Start Selling Today — It's Free
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats-section">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-card fade-up delay-1">
+        <div class="stat-num"><span class="count-up" data-count="100">0</span>+</div>
+        <div class="stat-label">Vehicles Successfully Sold</div>
+      </div>
+      <div class="stat-card fade-up delay-2">
+        <div class="stat-num"><span class="count-up" data-count="500">0</span>+</div>
+        <div class="stat-label">Active Buyers in Network</div>
+      </div>
+      <div class="stat-card fade-up delay-3">
+        <div class="stat-num"><span class="count-up" data-count="98">0</span>%</div>
+        <div class="stat-label">Customer Satisfaction Rate</div>
+      </div>
+      <div class="stat-card fade-up delay-4">
+        <div class="stat-num"><span class="count-up" data-count="7">0</span></div>
+        <div class="stat-label">Average Days to Sell</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED INVENTORY -->
+<section class="section">
+  <div class="container">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:20px;margin-bottom:48px">
+      <div class="fade-up">
+        <div class="section-tag">Premium Inventory</div>
+        <h2 class="section-title">Featured <span>Vehicles</span></h2>
+        <p class="section-sub">Hand-picked premium vehicles from our latest inventory</p>
+      </div>
+      <a href="#" onclick="showPage('inventory')" class="btn btn-outline fade-up">View All Vehicles →</a>
+    </div>
+    <div class="vehicles-grid" id="featured-grid"></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section section-gray testimonials-section">
+  <div class="container">
+    <div class="why-header fade-up">
+      <div class="section-tag">Customer Stories</div>
+      <h2 class="section-title">Real People, <span>Real Results</span></h2>
+      <p class="section-sub">Don't take our word for it — here's what our clients say about their CarConnect experience</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card fade-up delay-1">
+        <div class="stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <p class="testimonial-text">"I was amazed at how quickly CarConnect sold my BMW 5 Series. Listed on a Wednesday, had 3 serious offers by Friday, and completed the sale the following week. Got Rs. 2 million more than I expected!"</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">RK</div>
+          <div><div class="author-name">Rajesh Karunaratne</div><div class="author-role">Sold BMW 5 Series — Colombo 3</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-up delay-2">
+        <div class="stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <p class="testimonial-text">"The team at CarConnect handled absolutely everything. I just handed them the keys, they took professional photos, found the buyer, and 5 days later I had the full payment in my account. Incredible service!"</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">SP</div>
+          <div><div class="author-name">Sanduni Perera</div><div class="author-role">Sold Toyota Land Cruiser — Nugegoda</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-up delay-3">
+        <div class="stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <p class="testimonial-text">"Used CarConnect to sell my Honda Vezel and couldn't be happier. They were transparent throughout, gave me a realistic valuation, and matched me with the perfect buyer. Highly recommended!"</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">DW</div>
+          <div><div class="author-name">Dilshan Wickremasinghe</div><div class="author-role">Sold Honda Vezel — Kandy</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SELL CTA STRIP -->
+<section class="sell-strip">
+  <div class="container">
+    <div class="sell-strip-inner">
+      <div class="sell-strip-content fade-up">
+        <div class="section-tag" style="background:rgba(208,2,27,0.2);color:#ff8a95">Limited Time Offer</div>
+        <h2 class="section-title">Ready to Sell? <span>List for Free</span> Today</h2>
+        <p>Submit your vehicle today and get a professional valuation within 24 hours — completely free. No commitment, no hidden fees.</p>
+      </div>
+      <div class="sell-strip-actions fade-up delay-2">
+        <a href="#" onclick="showPage('sell')" class="btn btn-primary btn-lg">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2v20M2 12l10-10 10 10"/></svg>
+          Sell Your Car — Free
+        </a>
+        <a href="https://wa.me/+94777150066?text=Hi%20CarConnect%2C%20I%20want%20to%20sell%20my%20vehicle" target="_blank" class="btn btn-lg" style="background:rgba(37,211,102,0.15);border:1px solid rgba(37,211,102,0.4);color:#25D366">
+          Chat on WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div><!-- end home page -->
+
+<!-- ===== SELL WITH US PAGE ===== -->
+<div id="page-sell" class="page-section">
+  <div class="page-hero">
+    <div class="breadcrumb"><a href="#" onclick="showPage('home')">Home</a> / <span>Sell With Us</span></div>
+    <div class="section-tag" style="background:rgba(208,2,27,0.2);color:#ff8a95;margin-bottom:20px">Free Vehicle Listing</div>
+    <h1>Sell Your Vehicle <em style="color:var(--red);font-style:normal">Fast & Easy</em></h1>
+    <p>Join 500+ satisfied sellers who got the best price for their vehicle through CarConnect.lk. Our expert team handles everything — you just collect the money.</p>
+  </div>
+
+  <!-- PROCESS MINI -->
+  <div style="background:#fff;border-bottom:1px solid var(--gray-200);padding:32px 0">
+    <div class="container">
+      <div style="display:flex;align-items:center;justify-content:center;gap:0;flex-wrap:wrap">
+        <div style="display:flex;align-items:center;gap:12px;padding:12px 32px">
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0">1</div>
+          <a href="#sell-form"><span style="font-size:14px;font-weight:600;color:var(--navy)">Submit Details</span></a>
+        </div>
+        <div style="font-size:20px;color:var(--gray-200)">→</div>
+        <div style="display:flex;align-items:center;gap:12px;padding:12px 32px">
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--gray-100);color:var(--navy);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0">2</div>
+          <span style="font-size:14px;font-weight:600;color:var(--navy)">Free Inspection</span>
+        </div>
+        <div style="font-size:20px;color:var(--gray-200)">→</div>
+        <div style="display:flex;align-items:center;gap:12px;padding:12px 32px">
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--gray-100);color:var(--navy);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0">3</div>
+          <span style="font-size:14px;font-weight:600;color:var(--navy)">Get Paid Fast</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="sell-form-section">
+    <div class="container">
+      <div class="sell-layout">
+        <!-- BENEFITS -->
+        <div class="sell-benefits fade-up">
+          <div class="section-tag">Why Sell With Us</div>
+          <h2 class="section-title" style="margin-bottom:32px">Why Thousands Choose <span>CarConnect.lk</span></h2>
+          <div class="benefit-item">
+            <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+            <div class="benefit-content"><h4>Sell in as Little as 7 Days</h4><p>Our active buyer network gets your vehicle in front of serious buyers fast. No waiting for months with zero enquiries.</p></div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+            <div class="benefit-content"><h4>Best Market Price</h4><p>Professional valuation ensures you never undersell. We negotiate hard on your behalf to maximize your payout.</p></div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <div class="benefit-content"><h4>Zero Risk, Full Security</h4><p>We handle all legal documentation and ensure payment is secured before ownership transfers. Your protection is our priority.</p></div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+            <div class="benefit-content"><h4>5,000+ Pre-Qualified Buyers</h4><p>Instant access to our exclusive database of verified, serious buyers who are actively looking for vehicles right now.</p></div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+            <div class="benefit-content"><h4>Multi-Platform Marketing</h4><p>Your vehicle gets featured across CarConnect.lk, social media, and our buyer network simultaneously for maximum exposure.</p></div>
+          </div>
+          <div class="benefit-item" style="border-bottom:none">
+            <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div class="benefit-content"><h4>100% Free to List</h4><p>No upfront costs, no listing fees. We only earn when you sell — so we're fully motivated to get you the best outcome.</p></div>
+          </div>
+        </div>
+
+        <!-- FORM -->
+        <div class="fade-up delay-2">
+          <div class="form-card">
+            <div id="form-container">
+              <h2 id="submit-vehicle">List Your Vehicle</h2>
+              <p>Fill in the details below and our team will contact you within 2 hours</p>
+              <div id="sell-form">
+                <div class="form-group">
+                  <label>Full Name *</label>
+                  <input type="text" class="form-control" id="f-name" placeholder="Your full name">
+                </div>
+                <div class="form-group">
+                  <label>Phone Number *</label>
+                  <input type="tel" class="form-control" id="f-phone" placeholder="+94 7XX XXX XXX">
+                </div>
+                <div class="form-group">
+                  <label>Vehicle Make *</label>
+                  <select class="form-control" id="f-make">
+                    <option value="">Select Make</option>
+                    <option>Toyota</option><option>Honda</option><option>Nissan</option>
+                    <option>Suzuki</option><option>BMW</option><option>Mercedes-Benz</option>
+                    <option>Audi</option><option>Kia</option><option>Hyundai</option>
+                    <option>Mazda</option><option>Mitsubishi</option><option>MG</option>
+                    <option>Land Rover</option><option>Perodua</option><option>Proton</option>
+                    <option>Volkswagen</option><option>Jeep</option><option>Ford</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                <div class="form-row">
+                  <div class="form-group" style="margin-bottom:0">
+                    <label>Model *</label>
+                    <input type="text" class="form-control" id="f-model" placeholder="e.g. Aqua, Vezel">
+                  </div>
+                  <div class="form-group" style="margin-bottom:0">
+                    <label>Year of Manufacture *</label>
+                    <input type="number" class="form-control" id="f-year" placeholder="e.g. 2020" min="1990" max="2025">
+                  </div>
+                </div>
+                <div class="form-group" style="margin-top:18px">
+                  <label>Mileage (km) *</label>
+                  <input type="number" class="form-control" id="f-mileage" placeholder="e.g. 45000">
+                </div>
+                <!-- <div class="form-group">
+                  <label>Asking Price (LKR) — Optional</label>
+                  <input type="number" class="form-control" id="f-price" placeholder="e.g. 8500000">
+                </div>
+                -->
+                <div class="form-group">
+                  <label>Upload Vehicle Photos (up to 10)</label>
+                  <div class="upload-area" onclick="document.getElementById('f-images').click()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                    <p>Click to upload photos<br><span>or drag & drop here</span></p>
+                    <p style="font-size:11px;color:var(--gray-400);margin-top:8px">JPG, PNG up to 10MB each</p>
+                  </div>
+                  <input type="file" id="f-images" multiple accept="image/*" style="display:none" onchange="previewImages(event)">
+                  <div class="upload-preview" id="img-preview"></div>
+                </div>
+                <div class="form-group">
+                  <label>Additional Notes (Optional)</label>
+                  <textarea class="form-control" id="f-notes" rows="3" placeholder="Any additional info about your vehicle (condition, modifications, service history...)"></textarea>
+                </div>
+                <button class="form-submit" onclick="submitSellForm()">
+                  Submit My Vehicle — It's Free
+                </button>
+                <p class="form-note">🔒 Your information is 100% private and secure. We will contact you within 2 hours.</p>
+              </div>
+            </div>
+            <div class="success-msg" id="success-msg">
+              <div class="checkmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <h3>Submitted Successfully! 🎉</h3>
+              <p>Thank you! Our team will review your vehicle details and contact you within 2 hours to schedule a free inspection.</p>
+              <div style="background:var(--off-white);border-radius:12px;padding:16px;margin-top:20px">
+                <p style="font-size:13px;font-weight:600;color:var(--navy);margin-bottom:8px">What happens next?</p>
+                <p style="font-size:13px;color:var(--gray-600)">1. Our team reviews your submission<br>2. We call you within 2 hours<br>3. Free inspection scheduled at your convenience<br>4. You receive a market valuation report</p>
+              </div>
+              <a href="https://wa.me/+94777150066?text=Hi%20CarConnect%2C%20I%20just%20submitted%20my%20vehicle%20for%20sale" target="_blank" class="btn btn-primary btn-lg" style="margin-top:24px;width:100%;justify-content:center">Chat on WhatsApp for Faster Response</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===== INVENTORY PAGE ===== -->
+<div id="page-inventory" class="page-section">
+  <div class="page-hero">
+    <div class="breadcrumb"><a href="#" onclick="showPage('home')">Home</a> / <span>Vehicle Inventory</span></div>
+    <div class="section-tag" style="background:rgba(208,2,27,0.2);color:#ff8a95;margin-bottom:20px">Collection at the Best Prices!</div>
+    <h1>Browse Our <span style="color:var(--red)">Inventory</span></h1>
+    <p>Explore our curated collection of premium, verified vehicles, each inspected and backed by our quality guarantee.</p>
+  </div>
+  <section class="inventory-section">
+    <div class="container">
+      <div class="filter-bar fade-up">
+        <div class="filter-group">
+          <label>Make</label>
+          <select id="filter-make" onchange="filterInventory()">
+            <option value="">All Makes</option>
+            <option>Toyota</option><option>Honda</option><option>BMW</option>
+            <option>Mercedes-Benz</option><option>Audi</option><option>Land Rover</option>
+            <option>Hyundai</option><option>Nissan</option><option>Mazda</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label>Body Type</label>
+          <select id="filter-type" onchange="filterInventory()">
+            <option value="">All Types</option>
+            <option>SUV</option><option>Sedan</option><option>Hatchback</option>
+            <option>Coupe</option><option>Pickup</option><option>Van</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label>Max Budget (LKR)</label>
+          <select id="filter-price" onchange="filterInventory()">
+            <option value="">Any Budget</option>
+            <option value="5000000">Under 5M</option>
+            <option value="10000000">Under 10M</option>
+            <option value="20000000">Under 20M</option>
+            <option value="50000000">Under 50M</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label>Year</label>
+          <select id="filter-year" onchange="filterInventory()">
+            <option value="">All Years</option>
+            <option value="2023">2023+</option>
+            <option value="2020">2020+</option>
+            <option value="2017">2017+</option>
+            <option value="2014">2014+</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label>Search</label>
+          <input type="text" id="filter-search" placeholder="Search..." oninput="filterInventory()">
+        </div>
+        <button class="filter-btn" onclick="clearFilters()">Clear All</button>
+      </div>
+      <div class="results-header fade-up">
+        <p class="results-count">Showing <strong id="results-count">0</strong> vehicles</p>
+        <select class="sort-select" onchange="sortInventory(this.value)">
+          <option value="newest">Newest First</option>
+          <option value="price-low">Price: Low to High</option>
+          <option value="price-high">Price: High to Low</option>
+          <option value="mileage">Lowest Mileage</option>
+        </select>
+      </div>
+      <div class="inventory-grid" id="inventory-grid"></div>
+    </div>
+  </section>
+</div>
+
+<!-- ===== CAR DETAIL PAGE ===== -->
+<div id="page-detail" class="page-section">
+  <section class="car-detail-section">
+    <div class="container">
+      <div style="margin-bottom:24px">
+        <a href="#" onclick="showPage('inventory')" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--gray-600)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+          Back to Inventory
+        </a>
+      </div>
+      <div class="car-detail-layout">
+        <div>
+          <div class="gallery-main" id="gallery-main">
+            <img id="main-img" src="" alt="">
+          </div>
+          <div class="gallery-thumbs" id="gallery-thumbs"></div>
+          <div class="car-specs" style="margin-top:32px">
+            <div class="specs-title">Vehicle Specifications</div>
+            <div class="specs-grid" id="specs-grid"></div>
+          </div>
+        </div>
+        <div class="car-inquiry">
+          <div class="inquiry-card">
+            <div class="car-price" id="d-price"></div>
+            <div class="car-title" id="d-title"></div>
+            <div class="car-subtitle" id="d-subtitle"></div>
+            <a id="wa-inquiry" href="#" target="_blank" class="btn btn-primary btn-lg" style="width:100%;justify-content:center;margin-bottom:10px">
+              <svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Inquire on WhatsApp
+            </a>
+            <a href="tel:+94777150066" class="btn btn-outline btn-lg" style="width:100%;justify-content:center">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:16px;height:16px"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 012 1.18 2 2 0 014 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92v2z"/></svg>
+              Call +94 777 150 066
+            </a>
+            <div style="border-top:1px solid var(--gray-200);margin:20px 0;padding-top:20px">
+              <p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--gray-400);margin-bottom:12px">Quick Inquiry</p>
+              <div class="inquiry-form">
+                <div class="form-group"><input id="submit-name" class="form-control" placeholder="Your Name" type="text"></div>
+                <div class="form-group"><input id="submit-phone" class="form-control" placeholder="Phone Number" type="tel"></div>
+                <button onclick="submitInquiry()" class="form-submit" style="margin-top:0">Send Inquiry</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="similar-section">
+    <div class="container">
+      <h2 class="section-title" style="margin-bottom:36px">Similar <span>Vehicles</span></h2>
+      <div class="vehicles-grid" id="similar-grid"></div>
+    </div>
+  </section>
+</div>
+
+<!-- FOOTER (all pages) -->
+<footer id="main-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <img src="/Images/logo.png" alt="CarConnect.lk" style="height:32px;margin-bottom:20px;">
+        <p>Sri Lanka's premium automotive marketplace — connecting serious sellers with verified buyers for a faster, smarter, stress-free vehicle selling experience.</p>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/carconnect.lk" target="_blank">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/@carconnect.lk" target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.79 1.52v-3.4a4.85 4.85 0 01-1.02-.12z"/></svg>
+          </a>
+          <a href="https://wa.me/+94777150066" target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#" onclick="showPage('home')">Home</a></li>
+          <li><a href="#" onclick="showPage('sell')">Sell Your Vehicle</a></li>
+          <li><a href="#" onclick="showPage('inventory')">Browse Inventory</a></li>
+          <li><a href="https://www.carconnect.lk/about.html" target="_blank">Our Story</a></li>
+          <li><a href="#" onclick="scrollToContact()">Contact Us</a></li>
+        </ul>
+      </div>
+      <!-- <div class="footer-col">
+        <h4>Our Services</h4>
+        <ul>
+          <li><a href="#">Vehicle Valuation</a></li>
+          <li><a href="#">Direct Imports</a></li>
+          <li><a href="#">Vehicle Inspection</a></li>
+          <li><a href="#">Buyer Matching</a></li>
+          <li><a href="#">Documentation Help</a></li>
+        </ul>
+      </div>
+    -->
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul class="footer-contact">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 012 1.18 2 2 0 014 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92v2z"/></svg>
+            <a href="tel:+94777150066" style="color:rgba(255,255,255,0.6)">+94 777 150 066</a>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Level 08, Courtyard Wing, Cinnamon Grand Hotel, Galle Road, Colombo 03, Sri Lanka.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>Mon–Fri: 9:00am–6:00pm</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom" id="contact">
+      <p>© 2025 CarConnect.lk — All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/+94777150066?text=Hi%20CarConnect%2C%20I%27m%20interested%20in%20your%20services" target="_blank" class="whatsapp-float">
+  <div class="whatsapp-pulse"></div>
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- MOBILE STICKY CTA -->
+<div class="mobile-cta-bar">
+  <a href="tel:+94777150066" class="btn btn-outline" style="padding:12px;font-size:12px;justify-content:center">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 012 1.18 2 2 0 014 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92v2z"/></svg>
+    Call Us
+  </a>
+  <a href="#" onclick="showPage('sell')" class="btn btn-primary" style="flex:2;padding:12px;font-size:12px;justify-content:center">Sell My Car — Free</a>
+</div>
+</body>
+</html>
