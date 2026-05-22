@@ -286,6 +286,7 @@ footer{background: white;padding:80px 0 0; color: black;}
 .footer-col ul a{font-size:17px;color:Black;transition:var(--transition);font-weight: 600;}
 .footer-col ul a:hover{color: Red;padding-left:4px}
 .footer-contact li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color: black; margin-bottom:14px}
+.footer-contact ul li a{color: black}
 .footer-contact svg{width:16px;height:16px;color: black;flex-shrink:0;margin-top:3px}
 .footer-bottom{padding:20px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
 .footer-bottom p{font-size:12px;color:rgba(255,255,255,0.3)}
