@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CarConnect.lk — Sell Your Vehicle Faster & Smarter</title>
+<meta name="description" content="Sri Lanka's premium automotive marketplace. Sell your vehicle fast with CarConnect.lk">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800;900&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root {
+  --red: #D0021B;
+  --navy: #0A1628;
+  --navy-light: #1a2b4a;
+  --white: #ffffff;
+  --off-white: #F8F8F6;
+  --gray-100: #F4F4F2;
+  --gray-200: #E8E8E6;
+  --gray-400: #9A9A98;
+  --gray-600: #5A5A58;
+  --gold: #C9A84C;
+  --shadow-sm: 0 2px 12px rgba(10,22,40,0.08);
+  --shadow-md: 0 8px 32px rgba(10,22,40,0.12);
+  --shadow-lg: 0 20px 60px rgba(10,22,40,0.15);
+  --radius: 16px;
+  --radius-sm: 8px;
+  --transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Manrope',sans-serif;color:var(--navy);background:var(--white);overflow-x:hidden;line-height:1.6}
+img{max-width:100%;height:auto;display:block}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;font-family:'Manrope',sans-serif;border:none;outline:none}
+ul{list-style:none}
+
+/* UTILITY */
+.container{width:100%;max-width:1240px;margin:0 auto;padding:0 24px}
+.section-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(208,2,27,0.08);color:var(--red);font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:6px 14px;border-radius:100px;margin-bottom:16px}
+.section-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--red);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(1.5)}}
+.section-title{font-family:'DM Serif Display',serif;font-size:clamp(28px,4vw,48px);line-height:1.15;color:var(--navy);margin-bottom:16px}
+.section-title span{color:var(--red)}
+.section-sub{font-size:16px;color:var(--gray-600);max-width:560px;line-height:1.7}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:100px;font-size:14px;font-weight:700;letter-spacing:0.5px;transition:var(--transition);white-space:nowrap}
+.btn-primary{background:var(--red);color:#fff;box-shadow:0 4px 20px rgba(208,2,27,0.3)}
+.btn-primary:hover{background:#b30018;transform:translateY(-2px);box-shadow:0 8px 30px rgba(208,2,27,0.4)}
+.btn-dark{background:var(--navy);color:#fff}
+.btn-dark:hover{background:var(--navy-light);transform:translateY(-2px)}
+.btn-outline{background:transparent;color:var(--navy);border:2px solid var(--gray-200)}
+.btn-outline:hover{border-color:var(--navy);background:var(--navy);color:#fff}
+.btn-white{background:#fff;color:var(--navy);box-shadow:var(--shadow-md)}
+.btn-white:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+.btn-lg{padding:18px 36px;font-size:15px}
+.btn svg{width:18px;height:18px;flex-shrink:0}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.fade-up{opacity:0;transform:translateY(40px);transition:opacity 0.7s ease,transform 0.7s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.delay-1{transition-delay:0.1s}
+.delay-2{transition-delay:0.2s}
+.delay-3{transition-delay:0.3s}
+.delay-4{transition-delay:0.4s}
+
+/* NAV */
+#navbar{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0;transition:var(--transition)}
+#navbar.scrolled{background:rgba(255,255,255,0.97);backdrop-filter:blur(20px);box-shadow:0 2px 30px rgba(10,22,40,0.1)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:74px}
+.nav-logo img{height:38px;width:auto}
+.nav-links{display:flex;align-items:center;gap:4px}
+.nav-links a{padding:8px 16px;font-size:13.5px;font-weight:600;color:var(--navy);border-radius:100px;transition:var(--transition)}
+.nav-links a:hover,.nav-links a.active{background:var(--gray-100);color:var(--red)}
+.nav-cta{display:flex;align-items:center;gap:10px}
+.nav-phone{font-size:13px;font-weight:700;color:var(--navy);display:flex;align-items:center;gap:6px}
+.nav-phone svg{color:var(--red)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px}
+.hamburger span{width:22px;height:2px;background:var(--navy);border-radius:2px;transition:var(--transition);display:block}
+.mobile-nav{display:none;position:fixed;inset:0;background:#fff;z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:8px}
+.mobile-nav.open{display:flex}
+.mobile-nav a{font-size:22px;font-weight:700;color:var(--navy);padding:12px 24px;border-radius:var(--radius)}
+.mobile-nav a:hover{color:var(--red)}
+.mobile-close{position:absolute;top:20px;right:20px;font-size:28px;background:none;border:none;cursor:pointer;color:var(--navy)}
+
+/* HERO */
+#home{min-height:100vh;background:var(--navy);position:relative;display:flex;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,#0A1628 0%,#1a2b4a 60%,#0d1f3c 100%)}
+.hero-bg::before{content:'';position:absolute;inset:0;background:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="g" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="0.5" fill="rgba(255,255,255,0.04)"/></pattern></defs><rect width="100" height="100" fill="url(%23g)"/></svg>');opacity:0.8}
+.hero-car-bg{position:absolute;right:-5%;bottom:0;width:65%;height:80%;background:url('https://images.unsplash.com/photo-1617814076367-b759c7d7e738?w=1200&q=80') center/cover no-repeat;mask-image:linear-gradient(to left,rgba(0,0,0,0.7) 0%,rgba(0,0,0,0) 90%);-webkit-mask-image:linear-gradient(to left,rgba(0,0,0,0.7) 0%,rgba(0,0,0,0) 90%)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,22,40,0.95) 0%,rgba(10,22,40,0.7) 50%,rgba(10,22,40,0.2) 100%)}
+.hero-content{position:relative;z-index:2;padding-top:80px;max-width:660px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(208,2,27,0.15);border:1px solid rgba(208,2,27,0.3);color:#ff8a95;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:6px 14px;border-radius:100px;margin-bottom:24px}
+.hero-title{font-family:'DM Serif Display',serif;font-size:clamp(36px,5.5vw,68px);line-height:1.08;color:#fff;margin-bottom:20px}
+.hero-title em{color:var(--red);font-style:normal;display:block}
+.hero-subtitle{font-size:clamp(15px,1.8vw,18px);color:rgba(255,255,255,0.7);line-height:1.7;margin-bottom:36px;max-width:500px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:48px}
+.hero-stats{display:flex;gap:32px;flex-wrap:wrap}
+.hero-stat{text-align:center}
+.hero-stat .num{font-family:'DM Serif Display',serif;font-size:32px;color:#fff;line-height:1}
+.hero-stat .lbl{font-size:11px;color:rgba(255,255,255,0.5);letter-spacing:1px;text-transform:uppercase;margin-top:4px}
+.hero-divider{width:1px;background:rgba(255,255,255,0.15);align-self:stretch}
+.hero-scroll{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,0.4);font-size:11px;letter-spacing:2px;text-transform:uppercase;z-index:2}
+.hero-scroll span{width:1px;height:40px;background:linear-gradient(to bottom,rgba(255,255,255,0.4),transparent);animation:scroll-line 2s infinite}
+@keyframes scroll-line{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* TRUST BAR */
+.trust-bar{background:var(--white);border-bottom:1px solid var(--gray-200);padding:20px 0}
+.trust-items{display:flex;align-items:center;justify-content:center;gap:0;flex-wrap:wrap}
+.trust-item{display:flex;align-items:center;gap:10px;padding:8px 28px;font-size:13px;font-weight:600;color:var(--gray-600);border-right:1px solid var(--gray-200)}
+.trust-item:last-child{border-right:none}
+.trust-item svg{color:var(--red);flex-shrink:0}
+
+/* SECTION PADDING */
+.section{padding:100px 0}
+.section-sm{padding:60px 0}
+.section-dark{background:var(--navy)}
+.section-gray{background:var(--off-white)}
+
+/* WHY CHOOSE US */
+.why-header{text-align:center;margin-bottom:64px}
+.why-header .section-sub{margin:0 auto}
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.feature-card{background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius);padding:36px 30px;position:relative;overflow:hidden;transition:var(--transition)}
+.feature-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--red),#ff6b6b);transform:scaleX(0);transform-origin:left;transition:var(--transition)}
+.feature-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:transparent}
+.feature-card:hover::before{transform:scaleX(1)}
+.feature-icon{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:rgba(208,2,27,0.08);color:var(--red);margin-bottom:20px}
+.feature-icon svg{width:26px;height:26px}
+.feature-card h3{font-size:17px;font-weight:700;margin-bottom:10px;color:var(--navy)}
+.feature-card p{font-size:14px;color:var(--gray-600);line-height:1.7}
+
+/* PROCESS */
+.process-section{background:var(--navy);padding:100px 0;position:relative;overflow:hidden}
+.process-section::before{content:'';position:absolute;top:-100px;right:-100px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(208,2,27,0.15),transparent 70%)}
+.process-header{text-align:center;margin-bottom:64px}
+.process-header .section-title{color:#fff}
+.process-header .section-sub{color:rgba(255,255,255,0.6);margin:0 auto}
+.process-header .section-tag{background:rgba(208,2,27,0.2);color:#ff8a95}
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;position:relative}
+.steps-grid::before{content:'';position:absolute;top:40px;left:calc(100%/6);right:calc(100%/6);height:1px;background:linear-gradient(90deg,transparent,rgba(208,2,27,0.4),transparent);z-index:0}
+.step-card{text-align:center;position:relative;z-index:1}
+.step-num{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,var(--red),#ff4444);color:#fff;font-family:'DM Serif Display',serif;font-size:28px;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;box-shadow:0 8px 32px rgba(208,2,27,0.4);position:relative}
+.step-num::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:1px solid rgba(208,2,27,0.3)}
+.step-card h3{font-size:18px;font-weight:700;color:#fff;margin-bottom:12px}
+.step-card p{font-size:14px;color:rgba(255,255,255,0.6);line-height:1.7}
+.process-cta{text-align:center;margin-top:56px}
+
+/* STATS */
+.stats-section{background:linear-gradient(135deg,var(--red) 0%,#8B0000 100%);padding:80px 0}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.stat-card{text-align:center;padding:20px}
+.stat-num{font-family:'DM Serif Display',serif;font-size:clamp(36px,4vw,52px);color:#fff;line-height:1}
+.stat-label{font-size:13px;color:rgba(255,255,255,0.7);margin-top:8px;letter-spacing:0.5px}
+.stat-divider{width:1px;background:rgba(255,255,255,0.2);align-self:stretch;display:none}
+
+/* INVENTORY */
+.vehicles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.vehicle-card{background:#fff;border-radius:var(--radius);overflow:hidden;border:1px solid var(--gray-200);transition:var(--transition);cursor:pointer}
+.vehicle-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:transparent}
+.vehicle-img{position:relative;overflow:hidden;height:200px}
+.vehicle-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease}
+.vehicle-card:hover .vehicle-img img{transform:scale(1.05)}
+.vehicle-badge{position:absolute;top:12px;left:12px;background:var(--red);color:#fff;font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:4px 10px;border-radius:100px}
+.vehicle-badge.featured{background:var(--gold)}
+.vehicle-info{padding:20px}
+.vehicle-info h3{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:6px;line-height:1.3}
+.vehicle-price{font-family:'DM Serif Display',serif;font-size:22px;color:var(--red);margin-bottom:14px}
+.vehicle-meta{display:flex;gap:14px;flex-wrap:wrap}
+.vehicle-meta span{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--gray-400);font-weight:500}
+.vehicle-meta svg{width:13px;height:13px}
+.vehicle-actions{display:flex;gap:8px;padding:0 20px 20px}
+.vehicle-actions .btn{flex:1;justify-content:center;font-size:12px;padding:10px 16px}
+
+/* TESTIMONIALS */
+.testimonials-section{background:var(--off-white)}
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.testimonial-card{background:#fff;border-radius:var(--radius);padding:32px;border:1px solid var(--gray-200);transition:var(--transition)}
+.testimonial-card:hover{box-shadow:var(--shadow-md);transform:translateY(-4px)}
+.stars{display:flex;gap:3px;margin-bottom:16px}
+.stars svg{width:16px;height:16px;color:#F5A623;fill:#F5A623}
+.testimonial-text{font-size:14px;color:var(--gray-600);line-height:1.8;margin-bottom:20px;font-style:italic}
+.testimonial-author{display:flex;align-items:center;gap:12px}
+.author-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--red),#ff6b6b);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:#fff;flex-shrink:0}
+.author-name{font-size:14px;font-weight:700;color:var(--navy)}
+.author-role{font-size:12px;color:var(--gray-400)}
+
+/* SELL CTA STRIP */
+.sell-strip{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%);padding:80px 0;position:relative;overflow:hidden}
+.sell-strip::after{content:'';position:absolute;right:0;top:50%;transform:translateY(-50%);width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(208,2,27,0.2),transparent 70%)}
+.sell-strip-inner{display:flex;align-items:center;justify-content:space-between;gap:40px;position:relative;z-index:1}
+.sell-strip-content .section-title{color:#fff;margin-bottom:12px}
+.sell-strip-content p{color:rgba(255,255,255,0.6);font-size:16px;max-width:500px}
+.sell-strip-actions{display:flex;gap:14px;flex-shrink:0;flex-wrap:wrap}
+
+/* PAGE SECTIONS */
+.page-hero{background:var(--navy);padding:160px 0 80px;position:relative;overflow:hidden;text-align:center}
+.page-hero::before{content:'';position:absolute;inset:0;background:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="g" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="0.5" fill="rgba(255,255,255,0.04)"/></pattern></defs><rect width="100" height="100" fill="url(%23g)"/></svg>')}
+.page-hero h1{font-family:'DM Serif Display',serif;font-size:clamp(32px,5vw,56px);color:#fff;margin-bottom:16px;position:relative;z-index:1}
+.page-hero p{font-size:18px;color:rgba(255,255,255,0.65);position:relative;z-index:1;max-width:560px;margin:0 auto}
+.breadcrumb{display:flex;align-items:center;justify-content:center;gap:8px;font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:20px;position:relative;z-index:1;text-transform:uppercase;letter-spacing:1px}
+.breadcrumb a{color:rgba(255,255,255,0.4)}
+.breadcrumb a:hover{color:var(--red)}
+.breadcrumb span{color:rgba(255,255,255,0.6);font-weight:600}
+
+/* SELL FORM */
+.sell-form-section{padding:100px 0;background:var(--off-white)}
+.sell-layout{display:grid;grid-template-columns:1fr 480px;gap:48px;align-items:start}
+.sell-benefits{position:sticky;top:100px}
+.benefit-item{display:flex;gap:16px;padding:20px 0;border-bottom:1px solid var(--gray-200)}
+.benefit-item:last-child{border-bottom:none}
+.benefit-icon{width:48px;height:48px;border-radius:12px;background:rgba(208,2,27,0.08);color:var(--red);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.benefit-icon svg{width:22px;height:22px}
+.benefit-content h4{font-size:15px;font-weight:700;margin-bottom:4px;color:var(--navy)}
+.benefit-content p{font-size:13px;color:var(--gray-600);line-height:1.6}
+.form-card{background:#fff;border-radius:24px;padding:40px;box-shadow:var(--shadow-lg)}
+.form-card h2{font-family:'DM Serif Display',serif;font-size:26px;margin-bottom:6px;color:var(--navy)}
+.form-card>p{font-size:14px;color:var(--gray-600);margin-bottom:28px}
+.form-group{margin-bottom:18px}
+.form-group label{display:block;font-size:12px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:var(--navy);margin-bottom:6px}
+.form-control{width:100%;padding:13px 16px;border:1.5px solid var(--gray-200);border-radius:10px;font-family:'Manrope',sans-serif;font-size:14px;color:var(--navy);transition:var(--transition);background:#fff}
+.form-control:focus{outline:none;border-color:var(--red);box-shadow:0 0 0 3px rgba(208,2,27,0.08)}
+.form-control::placeholder{color:var(--gray-400)}
+select.form-control{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%239A9A98' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:40px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.upload-area{border:2px dashed var(--gray-200);border-radius:10px;padding:28px;text-align:center;cursor:pointer;transition:var(--transition);background:var(--off-white)}
+.upload-area:hover{border-color:var(--red);background:rgba(208,2,27,0.02)}
+.upload-area svg{width:32px;height:32px;color:var(--gray-400);margin:0 auto 10px}
+.upload-area p{font-size:13px;color:var(--gray-600)}
+.upload-area span{color:var(--red);font-weight:700}
+.upload-preview{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.preview-img{width:72px;height:72px;border-radius:8px;object-fit:cover;border:2px solid var(--gray-200)}
+.form-submit{width:100%;padding:16px;background:linear-gradient(135deg,var(--red),#b30018);color:#fff;border-radius:12px;font-size:15px;font-weight:700;letter-spacing:0.5px;border:none;cursor:pointer;transition:var(--transition);margin-top:8px}
+.form-submit:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(208,2,27,0.4)}
+.form-note{text-align:center;font-size:12px;color:var(--gray-400);margin-top:12px}
+.success-msg{display:none;text-align:center;padding:40px 20px}
+.success-msg .checkmark{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#00B341,#00891f);display:flex;align-items:center;justify-content:center;margin:0 auto 20px}
+.success-msg .checkmark svg{width:36px;height:36px;color:#fff}
+.success-msg h3{font-family:'DM Serif Display',serif;font-size:24px;margin-bottom:10px;color:var(--navy)}
+.success-msg p{font-size:14px;color:var(--gray-600);line-height:1.7}
+
+/* INVENTORY FILTERS */
+.inventory-section{padding:60px 0 100px;background:var(--off-white)}
+.filter-bar{background:#fff;border-radius:var(--radius);padding:24px;box-shadow:var(--shadow-sm);margin-bottom:36px;display:flex;gap:14px;flex-wrap:wrap;align-items:flex-end}
+.filter-group{flex:1;min-width:140px}
+.filter-group label{display:block;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:var(--gray-400);margin-bottom:6px}
+.filter-group select,.filter-group input{width:100%;padding:10px 14px;border:1.5px solid var(--gray-200);border-radius:8px;font-family:'Manrope',sans-serif;font-size:13px;color:var(--navy);background:#fff}
+.filter-group select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%239A9A98' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px}
+.filter-btn{padding:10px 24px;background:var(--red);color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;align-self:flex-end;transition:var(--transition)}
+.filter-btn:hover{background:#b30018}
+.results-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
+.results-count{font-size:14px;color:var(--gray-600)}
+.results-count strong{color:var(--navy)}
+.sort-select{padding:8px 14px;border:1.5px solid var(--gray-200);border-radius:8px;font-size:13px;font-family:'Manrope',sans-serif;color:var(--navy)}
+.inventory-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+
+/* CAR DETAIL */
+.car-detail-section{padding:60px 0 100px}
+.car-detail-layout{display:grid;grid-template-columns:1fr 360px;gap:40px;align-items:start}
+.gallery-main{border-radius:var(--radius);overflow:hidden;height:420px;position:relative;cursor:pointer}
+.gallery-main img{width:100%;height:100%;object-fit:cover}
+.gallery-thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px}
+.gallery-thumb{border-radius:10px;overflow:hidden;height:80px;cursor:pointer;border:2px solid transparent;transition:var(--transition)}
+.gallery-thumb.active,.gallery-thumb:hover{border-color:var(--red)}
+.gallery-thumb img{width:100%;height:100%;object-fit:cover}
+.car-specs{background:#fff;border-radius:var(--radius);border:1px solid var(--gray-200);overflow:hidden;margin-top:32px}
+.specs-title{padding:18px 24px;border-bottom:1px solid var(--gray-200);font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--navy)}
+.specs-grid{display:grid;grid-template-columns:repeat(2,1fr)}
+.spec-item{padding:14px 24px;border-bottom:1px solid var(--gray-200);border-right:1px solid var(--gray-200)}
+.spec-item:nth-child(even){border-right:none}
+.spec-item:last-child,.spec-item:nth-last-child(2):nth-child(odd){border-bottom:none}
+.spec-label{font-size:11px;color:var(--gray-400);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px;font-weight:600}
+.spec-value{font-size:14px;font-weight:700;color:var(--navy)}
+.car-inquiry{position:sticky;top:100px}
+.inquiry-card{background:#fff;border-radius:var(--radius);padding:30px;border:1px solid var(--gray-200);box-shadow:var(--shadow-md)}
+.inquiry-card .car-price{font-family:'DM Serif Display',serif;font-size:32px;color:var(--red);margin-bottom:4px}
+.inquiry-card .car-title{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:6px}
+.inquiry-card .car-subtitle{font-size:13px;color:var(--gray-400);margin-bottom:24px}
+.inquiry-card .btn{width:100%;justify-content:center;margin-bottom:10px}
+.inquiry-divider{text-align:center;font-size:12px;color:var(--gray-400);margin:8px 0}
+.inquiry-form .form-group{margin-bottom:14px}
+.inquiry-form .form-control{padding:11px 14px;font-size:13px}
+.similar-section{padding:80px 0;background:var(--off-white)}
+
+/* FOOTER */
+footer{background:var(--navy);padding:80px 0 0}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;padding-bottom:60px;border-bottom:1px solid rgba(255,255,255,0.08)}
+.footer-brand img{height:32px;margin-bottom:20px;filter:brightness(0) invert(1)}
+.footer-brand p{font-size:14px;color:rgba(255,255,255,0.5);line-height:1.7;margin-bottom:24px;max-width:280px}
+.footer-social{display:flex;gap:10px}
+.footer-social a{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.6);transition:var(--transition)}
+.footer-social a:hover{background:var(--red);color:#fff}
+.footer-social svg{width:16px;height:16px}
+.footer-col h4{font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:20px}
+.footer-col ul li{margin-bottom:10px}
+.footer-col ul a{font-size:14px;color:rgba(255,255,255,0.6);transition:var(--transition)}
+.footer-col ul a:hover{color:#fff;padding-left:4px}
+.footer-contact li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:rgba(255,255,255,0.6);margin-bottom:14px}
+.footer-contact svg{width:16px;height:16px;color:var(--red);flex-shrink:0;margin-top:3px}
+.footer-bottom{padding:20px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.footer-bottom p{font-size:12px;color:rgba(255,255,255,0.3)}
+.footer-bottom-links{display:flex;gap:20px}
+.footer-bottom-links a{font-size:12px;color:rgba(255,255,255,0.3)}
+.footer-bottom-links a:hover{color:rgba(255,255,255,0.7)}
+
+/* WHATSAPP FLOAT */
+.whatsapp-float{position:fixed;bottom:28px;right:28px;z-index:900;width:58px;height:58px;border-radius:50%;background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 28px rgba(37,211,102,0.4);transition:var(--transition);animation:float 3s ease-in-out infinite}
+.whatsapp-float:hover{transform:scale(1.1) translateY(-3px);box-shadow:0 12px 36px rgba(37,211,102,0.5)}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.whatsapp-float svg{width:28px;height:28px}
+.whatsapp-pulse{position:absolute;inset:-4px;border-radius:50%;border:2px solid rgba(37,211,102,0.5);animation:wa-pulse 2s infinite}
+@keyframes wa-pulse{0%{transform:scale(1);opacity:0.8}100%{transform:scale(1.5);opacity:0}}
+
+/* MOBILE STICKY CTA */
+.mobile-cta-bar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:800;background:#fff;border-top:1px solid var(--gray-200);padding:12px 16px;gap:10px}
+.mobile-cta-bar .btn{flex:1;justify-content:center;font-size:12px;padding:12px}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .features-grid,.steps-grid{grid-template-columns:repeat(2,1fr)}
+  .stats-grid{grid-template-columns:repeat(2,2fr)}
+  .vehicles-grid,.testimonials-grid,.inventory-grid{grid-template-columns:repeat(2,1fr)}
+  .sell-layout{grid-template-columns:1fr}
+  .car-detail-layout{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
+  .sell-strip-inner{flex-direction:column;text-align:center}
+  .hero-car-bg{width:100%;opacity:0.3}
+  .hero-content{max-width:100%}
+}
+@media(max-width:768px){
+  .section{padding:70px 0}
+  .nav-links,.nav-cta .btn{display:none}
+  .hamburger{display:flex}
+  .features-grid,.steps-grid,.vehicles-grid,.testimonials-grid,.inventory-grid,.grid-2,.grid-3,.grid-4{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:1fr}
+  .hero-actions{flex-direction:column}
+  .hero-actions .btn{justify-content:center}
+  .hero-stats{justify-content:center;gap:20px}
+  .filter-bar{flex-direction:column}
+  .filter-group{min-width:100%}
+  .mobile-cta-bar{display:flex}
+  .car-detail-layout{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .gallery-thumbs{grid-template-columns:repeat(4,1fr)}
+  .steps-grid::before{display:none}
+  .sell-strip-actions{flex-direction:column;width:100%}
+  .sell-strip-actions .btn{justify-content:center}
+  body{padding-bottom:80px}
+  .whatsapp-float{bottom:100px}
+  .results-header{flex-direction:column;align-items:flex-start;gap:10px}
+}
+
+/* PAGE VISIBILITY */
+.page-section{display:none}
+.page-section.active{display:block}
+#page-home.active{display:block}
+
+/* LOADING ANIMATION */
+@keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.anim-in{animation:fadeInUp 0.7s ease both}
+.anim-in-1{animation-delay:0.1s}
+.anim-in-2{animation-delay:0.2s}
+.anim-in-3{animation-delay:0.3s}
+.anim-in-4{animation-delay:0.4s}
+
+/* COUNT UP */
+.count-up{display:inline-block}
+
+/* BADGE RIBBON */
+.ribbon{position:absolute;top:16px;right:16px;background:rgba(10,22,40,0.8);backdrop-filter:blur(8px);color:#fff;padding:4px 12px;border-radius:100px;font-size:11px;font-weight:700}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo" onclick="showPage('home')">
+        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCADaAbUDASIAAhEBAxEB/8QAHAABAQACAwEBAAAAAAAAAAAAAAQDBwECBQYI/8QAQRAAAgIBAgEHBwkGBwEBAAAAAAECAwQFESEGEhMxQVFxBxQyYYGRwSIzNDZCcqGx0RVSU1R0shYjNWJjkvCU4f/EABsBAQACAwEBAAAAAAAAAAAAAAACBQMEBgEH/8QAQREAAgEDAQUEBQkGBQUAAAAAAAECAwQRBRIhMUFRBhNhcSIygZGxFDM0UqGywdHwBxUWNVOCFyOiwuFCYnJzkv/aAAwDAQACEQMRAD8A/GQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB7/JTkxl65N2c7oMSD2la1vu+6K7X+RCpUjTjtSeEblhp9zqFeNvbQcpvkv1uXizwAbcq0PkvoOOp5NeMn/EympSk/Un8EcftvkfP5DuwWn2Ojh/aaP7w2vUg2jvP8PO4SjeXtOnP6rf5tfA1IDa2o8k9A1jF6fAVVEpehbjNOD8Yrh7tjW+uaXlaRqE8LKUeelvGUXupRfU0bFC7hW3Lc+hz+v8AZK+0WKq1MSpy4SjvXt6fDoyEA7QjKc4wgnKUnsku1mycwll4R1BtnH5H6YuTywbMap5UqvlX7fKVm3Xv3J9hqm+qdF9lNsXGyuTjJPsaezRrULqFdtR5HR6/2XvNDjSlcYfeLO7k+afisnQAr0aivK1fCxbd+juyIVy2fHZySZsN4WTn6NKVapGnHi2l7yQG58rTeTen4ysysDTaak1FTtph1+LRGpcibXzEtD4/7a4/iVy1JPeoM+k1f2bToy2Kl5TjLo9xqQG0tZ5E6TnY7t03bEua3g4Scq5eK+KNaZ+Jfg5luJkwcLapc2S/92G1QuoV/V4nK6/2Wv8AQ5Rdwk4S4SjvT8OWH5+zJgAMlNNlz2rjv3vsRuUqNStNQpptvkjm28cTGC5YCj87fGLDwFJf5V8JPuLf+HdRx83v6Zjn3ZyQ72PUhBkupsqltZFrufYzGVFWlOlNwqJprkyaeeAAXF7IrqwbpreW0F6+sz2ljcXktmhBy/XN8EHJR4kgLvMqerzqO/s/U6WYFsVzq5RsXq6zen2f1CEXLu846NN+5NsiqkepIDlpptNNNdjOCnaaeGTAM2LRK+bjGSWy34mOcZQm4yWzXWZpW1WNKNZx9FtpPxR5lZwdQAYD0AzYtEr5uMZJbLfiYnwexmlb1IU41ZL0ZZw+uOJ5lZwcAz42NO+M3Fr5PZ3mFpp7NbNHtS2q06caso4jLOH1xuYTTeDgAGA9AM1FEra7JqSXMW/HtMJmqW9SnCNSSwpcPHDweJp7gCujCdlKsdkYp+o7/s//AJ4+4s6fZ/UakFONPc1lb1wftIupFcyEF37P/wCePuH7P/54e4n/AA5qX9P7Y/med7DqQg5a2bW6exwUjWHhmQAz4+Jdct0ubHvZn8xrXCeTFPu/8y0t9EvriCqQp+i+baXxaIOpFbiEFk8CfN51VkbF7iScZQk4yTTXYzBd6bdWeO/g0nz4r3rcexkpcDgFdeGp1xl5xBbrfY7eYx/mIG1DQb+cVKMNz/7o/med5EiBc9P2Sbvit+9HHmMf5iBN9ndRW50/9UfzPO9j1IgZ8jHVTjtbCW/cCtr2lahUdOosNeKJqSe9FPJ7TZ6tq9GDBtKct5yX2Yri37jZ/KTVcXkxoddeNVBWbdHjVdnDtfqX4t+s+a8kePGWXn5TXyq4Qri/vNt/2o83ym5c7+U86G/kY1cYRXiuc/z/AAKKsvlF0qb4R3n1PSK38P8AZeWpUvnq8tmL6JZX+2T88Z4Hz+fm5WflSycy+d1suuUn+C7l6icAs0klhHzCpUnVm5zeW+Le9s9HRNZ1DR73bhXOKl6UJcYS8V8THrOp5er5zzMyalY0opRWyil2IiBHu47W1jebL1C6dsrV1H3aednO7PkD6fyb6Z5/ygjfOO9OIulfdzvsr38fYfMG2eQOBDSeTMci/aE7077G/sx24fhx9rNa+q93SeOL3HTdhNIWo6tCU16FP05dN3Be/HsTPTt1jHr5RU6M2ulsplZvv278I+5SfsPgPKfpnmmtxzq47VZcd36prg/g/eePmazfbyllrMG1Yr1ZBN9UU+EfctjY/KzEr17kk78dc6Sgsmnv6t9vc2vE0o0/kdSEuT3M7e51GPbDTb2hFenSlt0/GK4e1pPPi0ajPQ5NfWLTP6ur+9HnnocmvrFpn9XV/ei2qeo/I+R6b9Mpf+UfijYflT+rMf6iH5SNWG0/Kn9WY/1EPykasXF7I0tN+Z9p2v7TP53/AGR/E+u8mer5GPrMNNlOUsbITSi3uoSSb3Xd1NFnlbxK4ZWFmxSU7Iyrn6+bs1+b/A6eTnk/mPU4atlUzpopT6NTWznJrbgu5b9Zz5Wc6u3OxMCEk5URlOzbscttl7lv7UY24u9Wx03/AK9xZxhXpdiKkb5NZmu7zxxmPD/VjwzyPjcSh3283qiuMmUZWUq10ONtGK4No5qfQaa5rhKx7bkB29Ws9LtIUqO6pUW1KXNJ8Irp1Z8lS25ZfBHLbb3bbfrCbT3T2ZwDncvOTKUSy7JY7qmlPfqk+tE4M2FDpMqEX1b7v2G6qlxqNanTnLLeIrPn/wAkcKKbKqoQw6FdYt7Zeiu4kvvtue85Pbu7Ed9QsdmVJdkfkonN/Vr7Zk7O3eKUN2PrNcW+uWRhH/qfEGSm6yp71ya9XYYwU1KrOlJTptprmjI1k9FqGdS5JKN0V7zznwezM2HY68iEuxvZ+B31KHMypbdUlzi8vpK/s1etf5kXsz8crdLz5Mxx9GWzyMmkfPz+78TvfGOXS7a1tbDhJd500j5+f3fiYKbpU38+PfxXejfoXVOlplCjXWac3NPqt6xJeK+0g03NtcTCCzOpi4rJp4wl1+pkZzl9Zzs6zpy380+TT4NeDMsZbSyW6R8/P7vxI5ek/Es0j5+f3fiRy9J+JYXn8qtvOfxRGPrsu0uXNpukuxb/AIM65dcb6llUr76OdO+jZHh8GYMO90WceMJcJItvlNJafbW1x6k1Lf8AVe08S/PwIYe02jACnNoVclZXxrnxTXYTHLXdpUtKzo1FvX2+K8GZotSWUXad9GyPD4MhLtO+jZHh8GQlnqX0C08pfeIR9aRdd/pVfj+pCXXf6VX4/qQjXfnKP/rh8BT4PzAAKMyArwaIyTvu26OPf2kqW72RdqL6KmvHj1bbsutIpUoKpeVlmNNLC6ye5Z8ObMc290VzMWVlztbjBuEOxLtJQCuu7yteVHUrSy/1w6E4xUVhHaE5wlzoScX6jLk5Er4xUoxTj2rtMAPIXdaFKVGMnsy4rkMLOQADXPS7Ufo2P4fBEJdqP0bH8PgiEvO0X0+XlH7qMdL1QACjMh975Ir0rtRxm+MownFeG6f5o8byk48qOVd9jW0b4Qsjw/2qL/FMh5I6r+x9doy5t9C94WpfuPr93B+w2Hy40Ja7pleRhuMsmlc6pp8LIvs3/Ff/AKVdSXcXe3LhJH1LT6Ete7JOzob6tvLaS5tPL+EpY8Vg1MDtbXOqyVdsJQnF7SjJbNM6lofLmmnhgFGBh5WdkLHw6J32vjzYLfh3+o4zsTJwcmWNl0zpuh1xkjzaWcZ3mX5PV7rvtl7GcZw8Z6Z4Z8Czkxpr1XXMbD2fMlLnWNdkFxf6e02F5SdRWBye80qajZlPo0lw2gvS+C9pD5KdM6LCv1SyPyrn0dTa+yut+1/2nqahyp5MxyZ0ZVkbbKZOD3ockmnx2exT3FR1LlYjlRPsfZzTKVh2bm61eNGpc8JSePR4JLeuWX/cjUhs7yWal5xpFmn2S3sxZbx3/cl+j396Mn+KOSH7tf8A8j/QzYnKvkvG+MceyNU5tR3WO49b7XsSuatSvT2XTZg7MaTYaJqEbmOpU5LDTWUsp/3dcP2Gv+WWmfsrlBkY8I82mb6Sr7r7PY917Cfk19YtM/q6v70ffeVLTPOdJr1GuO9mLLaey64S/R7e9nwPJr6xaZ/V1f3o2ret3tvnng5LtBo/7p7RKlFYhKUZR8m+HseV7DcWr5+Bp2IsjUbFXTzlHdwcuL6uCTPOweU3JvIy66MXMr6ayXNgugnHdvs3cdiHyp/VmP8AUQ/KRq2LcWmm01xTXYaFpZQrUtpt5PoHa3tteaLqit6VOEo4T3p535zhp48txuPlnqebpOjTy8LHjbLnKMpS6q0/tbdvH8zT+Tfbk5FmRfZKy2yTlOT622bZ5I6rVyh0CVWWo2XQj0WTB/aTXX7V+O5rXlPpNmjavbhz3dfpVTa9KD6v09hn0/FOUqUliSKD9offahQt9ToVHK3kty5Rl/zweeDTWeCMWRx0ylrqT4/iQl2E1djTxpPj1xIpxlCTjJbNcGdlrEe9p0LqPqyio+Uo7mvxPksNzaOAAURkBVpn0teDJTvRN1XRsXYzd06vG3u6VWXCMk35ZIyWYtHOSmsmxP8Aef5mMs1Kr5SvhxhNcWRmTVbaVteVIS6trxT3p+4QeYoAAriR2gt5xS7yvVn/AJ8V3R+J006lzu6R8IQ47+sxZdnS5Eprq32XgX0Yu30iTnxqyWPKOcv3vBj4z8ijSPn5/d+JHL0n4lmkfPz+78SOXpPxI3n8qtvOfxQj67KMG9VyddnGufB79h1zKHRZsuMHxizAW4k431ea2vj9hntlON/RVlVfpL1H4/Vfg+XRiXovaQ0j5+f3fiRy9J+JfptcqsqyEls1H4kEvSfie38JU9Mt4SWGpT+KEd82W6d9GyPD4MhLtO+jZHh8GQkdS+gWnlL7wj60izCujKLxruMJej6mT5FUqbXCXsfejGX1NZlHRTaVsPRfeTtmtToK1n87D1H1X1H/ALfcH6DzyONO+jZHh8GQl+BFxoyYyWzS4r2MgI6mnGxtE+kvvMQ9ZnpwshXp1crK1Nb7bP2mLzvG/lY+5C7/AEqvx/UhLLU9WuLXuadPGO7hxiny8UQhBPLZd53jfysfciS6UZ2SlGKim+CXYdAUF5qde8io1cYW/dFL4Iyxgo8DtB7Ti33lWrJ+cRfY4/FkZfavOsKNkeNlfBo3dNj8osri2j626SXXZzn7HkjLdJMgABRGQAAAAAAu1H6Nj+HwRCXaj9Gx/D4IhLztF9Pl5R+6jHS9UAAozID63kbyvnpUI4OfGd2GvQlHjKv9V6j5IGOrShVjsyRZaVq11pNwri1lsyXua6Nc1+uJuHIweTfKevpl0GTPb5yuXNsXjtx9jIocgdCjZznLLmv3XatvwW5qyMpRkpRk4tdTTM0svLkmpZV7T607GaKsqsN0KjSO4n230y7fe3unQlU5tNLPn6LfvbNsX6hyc5MYsqq+gpl/Bp+VZJ+vt9rZrPlNq09a1aebKpVRaUYQT32iurd955gM9vaRovaby+pRdoO11xrFKNtGEaVGO9Rj+L3fYkvA29m6hg6JyOhbh31yhGhQxmpL5cmtk/Xx4v2mopNybbbbfFt9pwCVtbKgnvy2a/aPtJU1uVJbChCnHCinleL5dFu5JAAGyc0be5Oaji61yTXnttb2pdWVzpJbbLZt92647+s1follWPr+DbOxKqrKrlKb6lFTXH3EINWjaqltYe5/YdXrHaqrqkbV1KaU6K9bOdrhx6cPHe2bO8qeTR/h6mpWwc7L4yhFPduKT4+BrEAnbUO4hsZyafaTXZa5eu7lDY3JYznh44XwPW5K6xZour15S3dMvkXQX2oPr9q60fceUmvT8zk1Xnq6t2QlF484tf5ibSaXq24+w1iCFS2U6saieGvtNjTe09Sz0yvptSCnCot2X6r6rdv5PG7es9TtCcoTU4vZrqLt6M2K5z6O5fieeC7sdRlaqVOUVOnLjF8PNdH4o5aUc7+ZVPByIvhFSXqYhg5En8pKK9bMUL7oraNskvESyLpLZ2z28Tc73Rs7Xd1PLaWPfjJHE+pnyaseilw359z7e4jAK6+uoXNRSp01CKWEl+L5vxJRWFvZXiZKhF03LnVv8DvZgqa5+NZGUX2NkJ2hOUHvGTi/UzeoapTnSVC8p7cY8HnEl4J814Mi4POYszeZZO+3R/ijLXgNfKvnGEV18TB5zkfxZe8xznOb3nOUvFk1X0ik9qFKc30k0l9iyxib5lWVkwVfQY62h2vvIwCuvb6re1Nup5JLckuiXQlGKitxbpHz8/u/Ejl6T8RGUoveMmn1cGcE614qlpSt8eo5PPXOPyCjiTYOU2mmns0cA0U8PKJHr4V0b1z2l0sVs/WjyZek/ERlKL3jJp+pnBcalq8r+hSp1F6UM5fXON/nu3mOMNltl2nfRsjw+DITlSkk0pNJ9aT6zg1bq9Ve3o0UsbCa88vJJRw2wdq5yhNTi9muo6g0oycJKUXhokevXZC7GstikpOO0l69jyDlSkk0pNJ9ez6zgttV1Z6jGltRxKKefFt8fbz8SEIbOT0lVO7Ta4Q23334+0n8wyO6PvMEbbYraNk4ruUmjnp7/wCNZ/2ZtVtQ065jB16c9qMVHc1jcsdCKjJcGZvMMjuj7x5hkd0feYenv/jWf9mOnu/jWf8AZmHvdH/pz/8Apfke4n1OjTTafWjJjXyos50eKfWu8xAqaNedCqqtJ4a4E2srDL50U5W9lE1Gb64swywslPbo9/BonTae6ezMqyb0tuln7y4le6ddPbuaTjLm4NYfsfD2ENmS4MzVafa3vY1BdvHdmPNWPFxhRxa9J79ZinbbP07JSXc2dDBc3lmqLo2tHGeMpPMvZyXs4nqjLOWwACoJl2o/Rsf7vwRCcuUmknJtLqTfUcG/qV4r24dZLGUl7kl+BGEdlYAANAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAf/9k=" alt="CarConnect.lk">
+      </a>
+      <div class="nav-links">
+        <a href="#" onclick="showPage('home')" class="active" id="nav-home">Home</a>
+        <a href="#" onclick="showPage('sell')" id="nav-sell">Sell With Us</a>
+        <a href="#" onclick="showPage('inventory')" id="nav-inventory">Inventory</a>
+        <a href="#" onclick="scrollToContact()">Contact</a>
+      </div>
+      <div class="nav-cta">
+        <a href="tel:+94777150066" class="nav-phone">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 012 1.18 2 2 0 014 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92v2z"/></svg>
+          +94 777 150 066
+        </a>
+        <a href="#" onclick="showPage('sell')" class="btn btn-primary btn-sm" style="padding:10px 20px;font-size:12px">Sell My Car</a>
+      </div>
+      <div class="hamburger" onclick="toggleMobileNav()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobile-nav">
+  <button class="mobile-close" onclick="toggleMobileNav()">✕</button>
+  <a href="#" onclick="showPage('home');toggleMobileNav()">Home</a>
+  <a href="#" onclick="showPage('sell');toggleMobileNav()">Sell With Us</a>
+  <a href="#" onclick="showPage('inventory');toggleMobileNav()">Inventory</a>
+  <a href="#" onclick="scrollToContact();toggleMobileNav()">Contact</a>
+  <a href="#" onclick="showPage('sell');toggleMobileNav()" class="btn btn-primary btn-lg" style="margin-top:16px">Sell My Car Free</a>
+</div>
+
+<!-- ===== HOME PAGE ===== -->
+<div id="page-home" class="page-section active">
+
+<!-- HERO -->
+<section id="home" style="min-height:100vh;background:var(--navy);position:relative;display:flex;align-items:center;overflow:hidden">
+  <div class="hero-bg"></div>
+  <div class="hero-car-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="container" style="position:relative;z-index:2;padding-top:100px;padding-bottom:80px">
+    <div class="hero-content">
+      <div class="hero-badge anim-in anim-in-1">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        Sri Lanka's #1 Premium Auto Marketplace
+      </div>
+      <h1 class="hero-title anim-in anim-in-2">
+        We Help You Sell Your Vehicle
+        <em>Faster & Smarter</em>
+      </h1>
+      <p class="hero-subtitle anim-in anim-in-3">Join thousands of Sri Lankans who trusted CarConnect.lk to get the best price for their vehicle — in days, not months. Premium buyers, zero hassle.</p>
+      <div class="hero-actions anim-in anim-in-4">
+        <a href="#" onclick="showPage('sell')" class="btn btn-primary btn-lg">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2v20M2 12l10-10 10 10"/></svg>
+          Sell Your Car Now
+        </a>
+        <a href="#" onclick="showPage('inventory')" class="btn btn-white btn-lg">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          Browse Inventory
+        </a>
+        <a href="https://wa.me/+94777150066?text=Hello%20CarConnect%2C%20I%20need%20help" target="_blank" class="btn btn-lg" style="background:rgba(37,211,102,0.15);border:1px solid rgba(37,211,102,0.3);color:#25D366">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp Us
+        </a>
+      </div>
+      <div class="hero-stats anim-in anim-in-4">
+        <div class="hero-stat">
+          <div class="num" data-count="500">0</div>
+          <div class="lbl">Vehicles Sold</div>
+        </div>
+        <div class="hero-divider"></div>
+        <div class="hero-stat">
+          <div class="num" data-count="98">0</div>
+          <div class="lbl">% Customer Satisfaction</div>
+        </div>
+        <div class="hero-divider"></div>
+        <div class="hero-stat">
+          <div class="num" data-days>7</div>
+          <div class="lbl">Days Avg. Sale Time</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span></span>
+    Scroll
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="container">
+    <div class="trust-items">
+      <div class="trust-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        100% Safe & Secure Transactions
+      </div>
+      <div class="trust-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Sell in as Fast as 7 Days
+      </div>
+      <div class="trust-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        Verified Buyer Network
+      </div>
+      <div class="trust-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+        Best Market Price Guaranteed
+      </div>
+      <div class="trust-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        Zero Hidden Fees
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY CHOOSE US -->
+<section class="section section-gray">
+  <div class="container">
+    <div class="why-header fade-up">
+      <div class="section-tag">Why CarConnect.lk</div>
+      <h2 class="section-title">Sri Lanka's Most Trusted<br><span>Auto Sales Platform</span></h2>
+      <p class="section-sub">We don't just list your car — we actively market it to thousands of serious buyers, negotiate on your behalf, and handle everything from inspection to paperwork.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card fade-up delay-1">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+        <h3>Lightning-Fast Sales</h3>
+        <p>Our active buyer network means your vehicle gets seen by serious buyers immediately. Average sale time is just 7 days — not 3 months.</p>
+      </div>
+      <div class="feature-card fade-up delay-2">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3>100% Trusted Process</h3>
+        <p>Every transaction is verified and secure. We vet all buyers, handle legal paperwork, and ensure you get paid safely — zero risk to you.</p>
+      </div>
+      <div class="feature-card fade-up delay-3">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+        <h3>Maximum Market Value</h3>
+        <p>We provide professional vehicle valuation and market your car competitively to ensure you always get the best possible price in the market.</p>
+      </div>
+      <div class="feature-card fade-up delay-1">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+        <h3>5,000+ Buyer Network</h3>
+        <p>Access to our exclusive database of pre-qualified, serious buyers who are actively searching for vehicles like yours right now.</p>
+      </div>
+      <div class="feature-card fade-up delay-2">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+        <h3>Premium Marketing</h3>
+        <p>Professional photography, compelling listings, and multi-platform advertising ensure maximum visibility for your vehicle across all channels.</p>
+      </div>
+      <div class="feature-card fade-up delay-3">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <h3>Zero Stress, Done For You</h3>
+        <p>From valuation to handover, our dedicated team handles everything. You just wait for the money — we do all the hard work for you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3-STEP PROCESS -->
+<section class="process-section">
+  <div class="container">
+    <div class="process-header fade-up">
+      <div class="section-tag">Sell in 3 Steps</div>
+      <h2 class="section-title">So Simple, It Feels<br>Like Magic</h2>
+      <p class="section-sub">Forget the stress of private selling. Our streamlined 3-step process gets your vehicle sold fast, at the right price, with zero hassle.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card fade-up delay-1">
+        <div class="step-num">01</div>
+        <h3>Submit Your Vehicle</h3>
+        <p>Fill in our quick online form with your vehicle details and photos. Takes less than 3 minutes — and it's completely free.</p>
+      </div>
+      <div class="step-card fade-up delay-2">
+        <div class="step-num">02</div>
+        <h3>We Inspect & Value It</h3>
+        <p>Our expert team visits you, conducts a professional inspection, and gives you a fair market valuation — no obligation to sell.</p>
+      </div>
+      <div class="step-card fade-up delay-3">
+        <div class="step-num">03</div>
+        <h3>Get Paid Fast</h3>
+        <p>We connect you with the right buyer, handle all negotiations and paperwork, and ensure you receive payment safely and quickly.</p>
+      </div>
+    </div>
+    <div class="process-cta fade-up">
+      <a href="#" onclick="showPage('sell')" class="btn btn-primary btn-lg">
+        Start Selling Today — It's Free
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats-section">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-card fade-up delay-1">
+        <div class="stat-num"><span class="count-up" data-count="500">0</span>+</div>
+        <div class="stat-label">Vehicles Successfully Sold</div>
+      </div>
+      <div class="stat-card fade-up delay-2">
+        <div class="stat-num"><span class="count-up" data-count="5000">0</span>+</div>
+        <div class="stat-label">Active Buyers in Network</div>
+      </div>
+      <div class="stat-card fade-up delay-3">
+        <div class="stat-num"><span class="count-up" data-count="98">0</span>%</div>
+        <div class="stat-label">Customer Satisfaction Rate</div>
+      </div>
+      <div class="stat-card fade-up delay-4">
+        <div class="stat-num"><span class="count-up" data-count="7">0</span></div>
+        <div class="stat-label">Average Days to Sell</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED INVENTORY -->
+<section class="section">
+  <div class="container">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:20px;margin-bottom:48px">
+      <div class="fade-up">
+        <div class="section-tag">Premium Inventory</div>
+        <h2 class="section-title">Featured <span>Vehicles</span></h2>
+        <p class="section-sub">Hand-picked premium vehicles from our latest inventory</p>
+      </div>
+      <a href="#" onclick="showPage('inventory')" class="btn btn-outline fade-up">View All Vehicles →</a>
+    </div>
+    <div class="vehicles-grid" id="featured-grid"></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section section-gray testimonials-section">
+  <div class="container">
+    <div class="why-header fade-up">
+      <div class="section-tag">Customer Stories</div>
+      <h2 class="section-title">Real People, <span>Real Results</span></h2>
+      <p class="section-sub">Don't take our word for it — here's what our clients say about their CarConnect experience</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card fade-up delay-1">
+        <div class="stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <p class="testimonial-text">"I was amazed at how quickly CarConnect sold my BMW 5 Series. Listed on a Wednesday, had 3 serious offers by Friday, and completed the sale the following week. Got Rs. 2 million more than I expected!"</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">RK</div>
+          <div><div class="author-name">Rajesh Karunaratne</div><div class="author-role">Sold BMW 5 Series — Colombo 3</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-up delay-2">
+        <div class="stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <p class="testimonial-text">"The team at CarConnect handled absolutely everything. I just handed them the keys, they took professional photos, found the buyer, and 5 days later I had the full payment in my account. Incredible service!"</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">SP</div>
+          <div><div class="author-name">Sanduni Perera</div><div class="author-role">Sold Toyota Land Cruiser — Nugegoda</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-up delay-3">
+        <div class="stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <p class="testimonial-text">"Used CarConnect to sell my Honda Vezel and couldn't be happier. They were transparent throughout, gave me a realistic valuation, and matched me with the perfect buyer. Highly recommended!"</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">DW</div>
+          <div><div class="author-name">Dilshan Wickremasinghe</div><div class="author-role">Sold Honda Vezel — Kandy</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SELL CTA STRIP -->
+<section class="sell-strip">
+  <div class="container">
+    <div class="sell-strip-inner">
+      <div class="sell-strip-content fade-up">
+        <div class="section-tag" style="background:rgba(208,2,27,0.2);color:#ff8a95">Limited Time Offer</div>
+        <h2 class="section-title">Ready to Sell? <span>List for Free</span> Today</h2>
+        <p>Submit your vehicle today and get a professional valuation within 24 hours — completely free. No commitment, no hidden fees.</p>
+      </div>
+      <div class="sell-strip-actions fade-up delay-2">
+        <a href="#" onclick="showPage('sell')" class="btn btn-primary btn-lg">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2v20M2 12l10-10 10 10"/></svg>
+          Sell Your Car — Free
+        </a>
+        <a href="https://wa.me/+94777150066?text=Hi%20CarConnect%2C%20I%20want%20to%20sell%20my%20vehicle" target="_blank" class="btn btn-lg" style="background:rgba(37,211,102,0.15);border:1px solid rgba(37,211,102,0.4);color:#25D366">
+          Chat on WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div><!-- end home page -->
+
+<!-- ===== SELL WITH US PAGE ===== -->
+<div id="page-sell" class="page-section">
+  <div class="page-hero">
+    <div class="breadcrumb"><a href="#" onclick="showPage('home')">Home</a> / <span>Sell With Us</span></div>
+    <div class="section-tag" style="background:rgba(208,2,27,0.2);color:#ff8a95;margin-bottom:20px">Free Vehicle Listing</div>
+    <h1>Sell Your Vehicle <em style="color:var(--red);font-style:normal">Fast & Easy</em></h1>
+    <p>Join 500+ satisfied sellers who got the best price for their vehicle through CarConnect.lk. Our expert team handles everything — you just collect the money.</p>
+  </div>
+
+  <!-- PROCESS MINI -->
+  <div style="background:#fff;border-bottom:1px solid var(--gray-200);padding:32px 0">
+    <div class="container">
+      <div style="display:flex;align-items:center;justify-content:center;gap:0;flex-wrap:wrap">
+        <div style="display:flex;align-items:center;gap:12px;padding:12px 32px">
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0">1</div>
+          <span style="font-size:14px;font-weight:600;color:var(--navy)">Submit Details</span>
+        </div>
+        <div style="font-size:20px;color:var(--gray-200)">→</div>
+        <div style="display:flex;align-items:center;gap:12px;padding:12px 32px">
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--gray-100);color:var(--navy);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0">2</div>
+          <span style="font-size:14px;font-weight:600;color:var(--navy)">Free Inspection</span>
+        </div>
+        <div style="font-size:20px;color:var(--gray-200)">→</div>
+        <div style="display:flex;align-items:center;gap:12px;padding:12px 32px">
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--gray-100);color:var(--navy);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0">3</div>
+          <span style="font-size:14px;font-weight:600;color:var(--navy)">Get Paid Fast</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="sell-form-section">
+    <div class="container">
+      <div class="sell-layout">
+        <!-- BENEFITS -->
+        <div class="sell-benefits fade-up">
+          <div class="section-tag">Why Sell With Us</div>
+          <h2 class="section-title" style="margin-bottom:32px">Why Thousands Choose <span>CarConnect.lk</span></h2>
+          <div class="benefit-item">
+            <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+            <div class="benefit-content"><h4>Sell in as Little as 7 Days</h4><p>Our active buyer network gets your vehicle in front of serious buyers fast. No waiting for months with zero enquiries.</p></div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+            <div class="benefit-content"><h4>Best Market Price</h4><p>Professional valuation ensures you never undersell. We negotiate hard on your behalf to maximize your payout.</p></div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <div class="benefit-content"><h4>Zero Risk, Full Security</h4><p>We handle all legal documentation and ensure payment is secured before ownership transfers. Your protection is our priority.</p></div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+            <div class="benefit-content"><h4>5,000+ Pre-Qualified Buyers</h4><p>Instant access to our exclusive database of verified, serious buyers who are actively looking for vehicles right now.</p></div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+            <div class="benefit-content"><h4>Multi-Platform Marketing</h4><p>Your vehicle gets featured across CarConnect.lk, social media, and our buyer network simultaneously for maximum exposure.</p></div>
+          </div>
+          <div class="benefit-item" style="border-bottom:none">
+            <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div class="benefit-content"><h4>100% Free to List</h4><p>No upfront costs, no listing fees. We only earn when you sell — so we're fully motivated to get you the best outcome.</p></div>
+          </div>
+        </div>
+
+        <!-- FORM -->
+        <div class="fade-up delay-2">
+          <div class="form-card">
+            <div id="form-container">
+              <h2>List Your Vehicle</h2>
+              <p>Fill in the details below and our team will contact you within 2 hours</p>
+              <div id="sell-form">
+                <div class="form-group">
+                  <label>Full Name *</label>
+                  <input type="text" class="form-control" id="f-name" placeholder="Your full name">
+                </div>
+                <div class="form-group">
+                  <label>Phone Number *</label>
+                  <input type="tel" class="form-control" id="f-phone" placeholder="+94 7XX XXX XXX">
+                </div>
+                <div class="form-group">
+                  <label>Vehicle Make *</label>
+                  <select class="form-control" id="f-make">
+                    <option value="">Select Make</option>
+                    <option>Toyota</option><option>Honda</option><option>Nissan</option>
+                    <option>Suzuki</option><option>BMW</option><option>Mercedes-Benz</option>
+                    <option>Audi</option><option>Kia</option><option>Hyundai</option>
+                    <option>Mazda</option><option>Mitsubishi</option><option>MG</option>
+                    <option>Land Rover</option><option>Perodua</option><option>Proton</option>
+                    <option>Volkswagen</option><option>Jeep</option><option>Ford</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                <div class="form-row">
+                  <div class="form-group" style="margin-bottom:0">
+                    <label>Model *</label>
+                    <input type="text" class="form-control" id="f-model" placeholder="e.g. Aqua, Vezel">
+                  </div>
+                  <div class="form-group" style="margin-bottom:0">
+                    <label>Year of Manufacture *</label>
+                    <input type="number" class="form-control" id="f-year" placeholder="e.g. 2020" min="1990" max="2025">
+                  </div>
+                </div>
+                <div class="form-group" style="margin-top:18px">
+                  <label>Mileage (km) *</label>
+                  <input type="number" class="form-control" id="f-mileage" placeholder="e.g. 45000">
+                </div>
+                <div class="form-group">
+                  <label>Asking Price (LKR) — Optional</label>
+                  <input type="number" class="form-control" id="f-price" placeholder="e.g. 8500000">
+                </div>
+                <div class="form-group">
+                  <label>Upload Vehicle Photos (up to 10)</label>
+                  <div class="upload-area" onclick="document.getElementById('f-images').click()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                    <p>Click to upload photos<br><span>or drag & drop here</span></p>
+                    <p style="font-size:11px;color:var(--gray-400);margin-top:8px">JPG, PNG up to 10MB each</p>
+                  </div>
+                  <input type="file" id="f-images" multiple accept="image/*" style="display:none" onchange="previewImages(event)">
+                  <div class="upload-preview" id="img-preview"></div>
+                </div>
+                <div class="form-group">
+                  <label>Additional Notes</label>
+                  <textarea class="form-control" id="f-notes" rows="3" placeholder="Any additional info about your vehicle (condition, modifications, service history...)"></textarea>
+                </div>
+                <button class="form-submit" onclick="submitSellForm()">
+                  Submit My Vehicle — It's Free
+                </button>
+                <p class="form-note">🔒 Your information is 100% private and secure. We will contact you within 2 hours.</p>
+              </div>
+            </div>
+            <div class="success-msg" id="success-msg">
+              <div class="checkmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <h3>Submitted Successfully! 🎉</h3>
+              <p>Thank you! Our team will review your vehicle details and contact you within 2 hours to schedule a free inspection.</p>
+              <div style="background:var(--off-white);border-radius:12px;padding:16px;margin-top:20px">
+                <p style="font-size:13px;font-weight:600;color:var(--navy);margin-bottom:8px">What happens next?</p>
+                <p style="font-size:13px;color:var(--gray-600)">1. Our team reviews your submission<br>2. We call you within 2 hours<br>3. Free inspection scheduled at your convenience<br>4. You receive a market valuation report</p>
+              </div>
+              <a href="https://wa.me/+94777150066?text=Hi%20CarConnect%2C%20I%20just%20submitted%20my%20vehicle%20for%20sale" target="_blank" class="btn btn-primary btn-lg" style="margin-top:24px;width:100%;justify-content:center">Chat on WhatsApp for Faster Response</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===== INVENTORY PAGE ===== -->
+<div id="page-inventory" class="page-section">
+  <div class="page-hero">
+    <div class="breadcrumb"><a href="#" onclick="showPage('home')">Home</a> / <span>Vehicle Inventory</span></div>
+    <div class="section-tag" style="background:rgba(208,2,27,0.2);color:#ff8a95;margin-bottom:20px">Premium Collection</div>
+    <h1>Browse Our <span style="color:var(--red)">Inventory</span></h1>
+    <p>Explore our curated collection of premium, verified vehicles — each inspected and backed by our quality guarantee.</p>
+  </div>
+  <section class="inventory-section">
+    <div class="container">
+      <div class="filter-bar fade-up">
+        <div class="filter-group">
+          <label>Make</label>
+          <select id="filter-make" onchange="filterInventory()">
+            <option value="">All Makes</option>
+            <option>Toyota</option><option>Honda</option><option>BMW</option>
+            <option>Mercedes-Benz</option><option>Audi</option><option>Land Rover</option>
+            <option>Hyundai</option><option>Nissan</option><option>Mazda</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label>Body Type</label>
+          <select id="filter-type" onchange="filterInventory()">
+            <option value="">All Types</option>
+            <option>SUV</option><option>Sedan</option><option>Hatchback</option>
+            <option>Coupe</option><option>Pickup</option><option>Van</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label>Max Budget (LKR)</label>
+          <select id="filter-price" onchange="filterInventory()">
+            <option value="">Any Budget</option>
+            <option value="5000000">Under 5M</option>
+            <option value="10000000">Under 10M</option>
+            <option value="20000000">Under 20M</option>
+            <option value="50000000">Under 50M</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label>Year</label>
+          <select id="filter-year" onchange="filterInventory()">
+            <option value="">All Years</option>
+            <option value="2023">2023+</option>
+            <option value="2020">2020+</option>
+            <option value="2017">2017+</option>
+            <option value="2014">2014+</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label>Search</label>
+          <input type="text" id="filter-search" placeholder="Search..." oninput="filterInventory()">
+        </div>
+        <button class="filter-btn" onclick="clearFilters()">Clear All</button>
+      </div>
+      <div class="results-header fade-up">
+        <p class="results-count">Showing <strong id="results-count">0</strong> vehicles</p>
+        <select class="sort-select" onchange="sortInventory(this.value)">
+          <option value="newest">Newest First</option>
+          <option value="price-low">Price: Low to High</option>
+          <option value="price-high">Price: High to Low</option>
+          <option value="mileage">Lowest Mileage</option>
+        </select>
+      </div>
+      <div class="inventory-grid" id="inventory-grid"></div>
+    </div>
+  </section>
+</div>
+
+<!-- ===== CAR DETAIL PAGE ===== -->
+<div id="page-detail" class="page-section">
+  <section class="car-detail-section">
+    <div class="container">
+      <div style="margin-bottom:24px">
+        <a href="#" onclick="showPage('inventory')" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--gray-600)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+          Back to Inventory
+        </a>
+      </div>
+      <div class="car-detail-layout">
+        <div>
+          <div class="gallery-main" id="gallery-main">
+            <img id="main-img" src="" alt="">
+          </div>
+          <div class="gallery-thumbs" id="gallery-thumbs"></div>
+          <div class="car-specs" style="margin-top:32px">
+            <div class="specs-title">Vehicle Specifications</div>
+            <div class="specs-grid" id="specs-grid"></div>
+          </div>
+        </div>
+        <div class="car-inquiry">
+          <div class="inquiry-card">
+            <div class="car-price" id="d-price"></div>
+            <div class="car-title" id="d-title"></div>
+            <div class="car-subtitle" id="d-subtitle"></div>
+            <a id="wa-inquiry" href="#" target="_blank" class="btn btn-primary btn-lg" style="width:100%;justify-content:center;margin-bottom:10px">
+              <svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Inquire on WhatsApp
+            </a>
+            <a href="tel:+94777150066" class="btn btn-outline btn-lg" style="width:100%;justify-content:center">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:16px;height:16px"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 012 1.18 2 2 0 014 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92v2z"/></svg>
+              Call +94 777 150 066
+            </a>
+            <div style="border-top:1px solid var(--gray-200);margin:20px 0;padding-top:20px">
+              <p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--gray-400);margin-bottom:12px">Quick Inquiry</p>
+              <div class="inquiry-form">
+                <div class="form-group"><input class="form-control" placeholder="Your Name" type="text"></div>
+                <div class="form-group"><input class="form-control" placeholder="Phone Number" type="tel"></div>
+                <button onclick="submitInquiry()" class="form-submit" style="margin-top:0">Send Inquiry</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="similar-section">
+    <div class="container">
+      <h2 class="section-title" style="margin-bottom:36px">Similar <span>Vehicles</span></h2>
+      <div class="vehicles-grid" id="similar-grid"></div>
+    </div>
+  </section>
+</div>
+
+<!-- FOOTER (all pages) -->
+<footer id="main-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCADaAbUDASIAAhEBAxEB/8QAHAABAQACAwEBAAAAAAAAAAAAAAQDBwECBQYI/8QAQRAAAgIBAgEHBwkGBwEBAAAAAAECAwQFESEGEhMxQVFxBxQyYYGRwSIzNDZCcqGx0RVSU1R0shYjNWJjkvCU4f/EABsBAQACAwEBAAAAAAAAAAAAAAACBQMEBgEH/8QAQREAAgEDAQUEBQkGBQUAAAAAAAECAwQRBRIhMUFRBhNhcSIygZGxFDM0UqGywdHwBxUWNVOCFyOiwuFCYnJzkv/aAAwDAQACEQMRAD8A/GQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB7/JTkxl65N2c7oMSD2la1vu+6K7X+RCpUjTjtSeEblhp9zqFeNvbQcpvkv1uXizwAbcq0PkvoOOp5NeMn/EympSk/Un8EcftvkfP5DuwWn2Ojh/aaP7w2vUg2jvP8PO4SjeXtOnP6rf5tfA1IDa2o8k9A1jF6fAVVEpehbjNOD8Yrh7tjW+uaXlaRqE8LKUeelvGUXupRfU0bFC7hW3Lc+hz+v8AZK+0WKq1MSpy4SjvXt6fDoyEA7QjKc4wgnKUnsku1mycwll4R1BtnH5H6YuTywbMap5UqvlX7fKVm3Xv3J9hqm+qdF9lNsXGyuTjJPsaezRrULqFdtR5HR6/2XvNDjSlcYfeLO7k+afisnQAr0aivK1fCxbd+juyIVy2fHZySZsN4WTn6NKVapGnHi2l7yQG58rTeTen4ysysDTaak1FTtph1+LRGpcibXzEtD4/7a4/iVy1JPeoM+k1f2bToy2Kl5TjLo9xqQG0tZ5E6TnY7t03bEua3g4Scq5eK+KNaZ+Jfg5luJkwcLapc2S/92G1QuoV/V4nK6/2Wv8AQ5Rdwk4S4SjvT8OWH5+zJgAMlNNlz2rjv3vsRuUqNStNQpptvkjm28cTGC5YCj87fGLDwFJf5V8JPuLf+HdRx83v6Zjn3ZyQ72PUhBkupsqltZFrufYzGVFWlOlNwqJprkyaeeAAXF7IrqwbpreW0F6+sz2ljcXktmhBy/XN8EHJR4kgLvMqerzqO/s/U6WYFsVzq5RsXq6zen2f1CEXLu846NN+5NsiqkepIDlpptNNNdjOCnaaeGTAM2LRK+bjGSWy34mOcZQm4yWzXWZpW1WNKNZx9FtpPxR5lZwdQAYD0AzYtEr5uMZJbLfiYnwexmlb1IU41ZL0ZZw+uOJ5lZwcAz42NO+M3Fr5PZ3mFpp7NbNHtS2q06caso4jLOH1xuYTTeDgAGA9AM1FEra7JqSXMW/HtMJmqW9SnCNSSwpcPHDweJp7gCujCdlKsdkYp+o7/s//AJ4+4s6fZ/UakFONPc1lb1wftIupFcyEF37P/wCePuH7P/54e4n/AA5qX9P7Y/med7DqQg5a2bW6exwUjWHhmQAz4+Jdct0ubHvZn8xrXCeTFPu/8y0t9EvriCqQp+i+baXxaIOpFbiEFk8CfN51VkbF7iScZQk4yTTXYzBd6bdWeO/g0nz4r3rcexkpcDgFdeGp1xl5xBbrfY7eYx/mIG1DQb+cVKMNz/7o/med5EiBc9P2Sbvit+9HHmMf5iBN9ndRW50/9UfzPO9j1IgZ8jHVTjtbCW/cCtr2lahUdOosNeKJqSe9FPJ7TZ6tq9GDBtKct5yX2Yri37jZ/KTVcXkxoddeNVBWbdHjVdnDtfqX4t+s+a8kePGWXn5TXyq4Qri/vNt/2o83ym5c7+U86G/kY1cYRXiuc/z/AAKKsvlF0qb4R3n1PSK38P8AZeWpUvnq8tmL6JZX+2T88Z4Hz+fm5WflSycy+d1suuUn+C7l6icAs0klhHzCpUnVm5zeW+Le9s9HRNZ1DR73bhXOKl6UJcYS8V8THrOp5er5zzMyalY0opRWyil2IiBHu47W1jebL1C6dsrV1H3aednO7PkD6fyb6Z5/ygjfOO9OIulfdzvsr38fYfMG2eQOBDSeTMci/aE7077G/sx24fhx9rNa+q93SeOL3HTdhNIWo6tCU16FP05dN3Be/HsTPTt1jHr5RU6M2ulsplZvv278I+5SfsPgPKfpnmmtxzq47VZcd36prg/g/eePmazfbyllrMG1Yr1ZBN9UU+EfctjY/KzEr17kk78dc6Sgsmnv6t9vc2vE0o0/kdSEuT3M7e51GPbDTb2hFenSlt0/GK4e1pPPi0ajPQ5NfWLTP6ur+9HnnocmvrFpn9XV/ei2qeo/I+R6b9Mpf+UfijYflT+rMf6iH5SNWG0/Kn9WY/1EPykasXF7I0tN+Z9p2v7TP53/AGR/E+u8mer5GPrMNNlOUsbITSi3uoSSb3Xd1NFnlbxK4ZWFmxSU7Iyrn6+bs1+b/A6eTnk/mPU4atlUzpopT6NTWznJrbgu5b9Zz5Wc6u3OxMCEk5URlOzbscttl7lv7UY24u9Wx03/AK9xZxhXpdiKkb5NZmu7zxxmPD/VjwzyPjcSh3283qiuMmUZWUq10ONtGK4No5qfQaa5rhKx7bkB29Ws9LtIUqO6pUW1KXNJ8Irp1Z8lS25ZfBHLbb3bbfrCbT3T2ZwDncvOTKUSy7JY7qmlPfqk+tE4M2FDpMqEX1b7v2G6qlxqNanTnLLeIrPn/wAkcKKbKqoQw6FdYt7Zeiu4kvvtue85Pbu7Ed9QsdmVJdkfkonN/Vr7Zk7O3eKUN2PrNcW+uWRhH/qfEGSm6yp71ya9XYYwU1KrOlJTptprmjI1k9FqGdS5JKN0V7zznwezM2HY68iEuxvZ+B31KHMypbdUlzi8vpK/s1etf5kXsz8crdLz5Mxx9GWzyMmkfPz+78TvfGOXS7a1tbDhJd500j5+f3fiYKbpU38+PfxXejfoXVOlplCjXWac3NPqt6xJeK+0g03NtcTCCzOpi4rJp4wl1+pkZzl9Zzs6zpy380+TT4NeDMsZbSyW6R8/P7vxI5ek/Es0j5+f3fiRy9J+JYXn8qtvOfxRGPrsu0uXNpukuxb/AIM65dcb6llUr76OdO+jZHh8GYMO90WceMJcJItvlNJafbW1x6k1Lf8AVe08S/PwIYe02jACnNoVclZXxrnxTXYTHLXdpUtKzo1FvX2+K8GZotSWUXad9GyPD4MhLtO+jZHh8GQlnqX0C08pfeIR9aRdd/pVfj+pCXXf6VX4/qQjXfnKP/rh8BT4PzAAKMyArwaIyTvu26OPf2kqW72RdqL6KmvHj1bbsutIpUoKpeVlmNNLC6ye5Z8ObMc290VzMWVlztbjBuEOxLtJQCuu7yteVHUrSy/1w6E4xUVhHaE5wlzoScX6jLk5Er4xUoxTj2rtMAPIXdaFKVGMnsy4rkMLOQADXPS7Ufo2P4fBEJdqP0bH8PgiEvO0X0+XlH7qMdL1QACjMh975Ir0rtRxm+MownFeG6f5o8byk48qOVd9jW0b4Qsjw/2qL/FMh5I6r+x9doy5t9C94WpfuPr93B+w2Hy40Ja7pleRhuMsmlc6pp8LIvs3/Ff/AKVdSXcXe3LhJH1LT6Ete7JOzob6tvLaS5tPL+EpY8Vg1MDtbXOqyVdsJQnF7SjJbNM6lofLmmnhgFGBh5WdkLHw6J32vjzYLfh3+o4zsTJwcmWNl0zpuh1xkjzaWcZ3mX5PV7rvtl7GcZw8Z6Z4Z8Czkxpr1XXMbD2fMlLnWNdkFxf6e02F5SdRWBye80qajZlPo0lw2gvS+C9pD5KdM6LCv1SyPyrn0dTa+yut+1/2nqahyp5MxyZ0ZVkbbKZOD3ockmnx2exT3FR1LlYjlRPsfZzTKVh2bm61eNGpc8JSePR4JLeuWX/cjUhs7yWal5xpFmn2S3sxZbx3/cl+j396Mn+KOSH7tf8A8j/QzYnKvkvG+MceyNU5tR3WO49b7XsSuatSvT2XTZg7MaTYaJqEbmOpU5LDTWUsp/3dcP2Gv+WWmfsrlBkY8I82mb6Sr7r7PY917Cfk19YtM/q6v70ffeVLTPOdJr1GuO9mLLaey64S/R7e9nwPJr6xaZ/V1f3o2ret3tvnng5LtBo/7p7RKlFYhKUZR8m+HseV7DcWr5+Bp2IsjUbFXTzlHdwcuL6uCTPOweU3JvIy66MXMr6ayXNgugnHdvs3cdiHyp/VmP8AUQ/KRq2LcWmm01xTXYaFpZQrUtpt5PoHa3tteaLqit6VOEo4T3p535zhp48txuPlnqebpOjTy8LHjbLnKMpS6q0/tbdvH8zT+Tfbk5FmRfZKy2yTlOT622bZ5I6rVyh0CVWWo2XQj0WTB/aTXX7V+O5rXlPpNmjavbhz3dfpVTa9KD6v09hn0/FOUqUliSKD9offahQt9ToVHK3kty5Rl/zweeDTWeCMWRx0ylrqT4/iQl2E1djTxpPj1xIpxlCTjJbNcGdlrEe9p0LqPqyio+Uo7mvxPksNzaOAAURkBVpn0teDJTvRN1XRsXYzd06vG3u6VWXCMk35ZIyWYtHOSmsmxP8Aef5mMs1Kr5SvhxhNcWRmTVbaVteVIS6trxT3p+4QeYoAAriR2gt5xS7yvVn/AJ8V3R+J006lzu6R8IQ47+sxZdnS5Eprq32XgX0Yu30iTnxqyWPKOcv3vBj4z8ijSPn5/d+JHL0n4lmkfPz+78SOXpPxI3n8qtvOfxQj67KMG9VyddnGufB79h1zKHRZsuMHxizAW4k431ea2vj9hntlON/RVlVfpL1H4/Vfg+XRiXovaQ0j5+f3fiRy9J+JfptcqsqyEls1H4kEvSfie38JU9Mt4SWGpT+KEd82W6d9GyPD4MhLtO+jZHh8GQkdS+gWnlL7wj60izCujKLxruMJej6mT5FUqbXCXsfejGX1NZlHRTaVsPRfeTtmtToK1n87D1H1X1H/ALfcH6DzyONO+jZHh8GQl+BFxoyYyWzS4r2MgI6mnGxtE+kvvMQ9ZnpwshXp1crK1Nb7bP2mLzvG/lY+5C7/AEqvx/UhLLU9WuLXuadPGO7hxiny8UQhBPLZd53jfysfciS6UZ2SlGKim+CXYdAUF5qde8io1cYW/dFL4Iyxgo8DtB7Ti33lWrJ+cRfY4/FkZfavOsKNkeNlfBo3dNj8osri2j626SXXZzn7HkjLdJMgABRGQAAAAAAu1H6Nj+HwRCXaj9Gx/D4IhLztF9Pl5R+6jHS9UAAozID63kbyvnpUI4OfGd2GvQlHjKv9V6j5IGOrShVjsyRZaVq11pNwri1lsyXua6Nc1+uJuHIweTfKevpl0GTPb5yuXNsXjtx9jIocgdCjZznLLmv3XatvwW5qyMpRkpRk4tdTTM0svLkmpZV7T607GaKsqsN0KjSO4n230y7fe3unQlU5tNLPn6LfvbNsX6hyc5MYsqq+gpl/Bp+VZJ+vt9rZrPlNq09a1aebKpVRaUYQT32iurd955gM9vaRovaby+pRdoO11xrFKNtGEaVGO9Rj+L3fYkvA29m6hg6JyOhbh31yhGhQxmpL5cmtk/Xx4v2mopNybbbbfFt9pwCVtbKgnvy2a/aPtJU1uVJbChCnHCinleL5dFu5JAAGyc0be5Oaji61yTXnttb2pdWVzpJbbLZt92647+s1follWPr+DbOxKqrKrlKb6lFTXH3EINWjaqltYe5/YdXrHaqrqkbV1KaU6K9bOdrhx6cPHe2bO8qeTR/h6mpWwc7L4yhFPduKT4+BrEAnbUO4hsZyafaTXZa5eu7lDY3JYznh44XwPW5K6xZour15S3dMvkXQX2oPr9q60fceUmvT8zk1Xnq6t2QlF484tf5ibSaXq24+w1iCFS2U6saieGvtNjTe09Sz0yvptSCnCot2X6r6rdv5PG7es9TtCcoTU4vZrqLt6M2K5z6O5fieeC7sdRlaqVOUVOnLjF8PNdH4o5aUc7+ZVPByIvhFSXqYhg5En8pKK9bMUL7oraNskvESyLpLZ2z28Tc73Rs7Xd1PLaWPfjJHE+pnyaseilw359z7e4jAK6+uoXNRSp01CKWEl+L5vxJRWFvZXiZKhF03LnVv8DvZgqa5+NZGUX2NkJ2hOUHvGTi/UzeoapTnSVC8p7cY8HnEl4J814Mi4POYszeZZO+3R/ijLXgNfKvnGEV18TB5zkfxZe8xznOb3nOUvFk1X0ik9qFKc30k0l9iyxib5lWVkwVfQY62h2vvIwCuvb6re1Nup5JLckuiXQlGKitxbpHz8/u/Ejl6T8RGUoveMmn1cGcE614qlpSt8eo5PPXOPyCjiTYOU2mmns0cA0U8PKJHr4V0b1z2l0sVs/WjyZek/ERlKL3jJp+pnBcalq8r+hSp1F6UM5fXON/nu3mOMNltl2nfRsjw+DITlSkk0pNJ9aT6zg1bq9Ve3o0UsbCa88vJJRw2wdq5yhNTi9muo6g0oycJKUXhokevXZC7GstikpOO0l69jyDlSkk0pNJ9ez6zgttV1Z6jGltRxKKefFt8fbz8SEIbOT0lVO7Ta4Q23334+0n8wyO6PvMEbbYraNk4ruUmjnp7/wCNZ/2ZtVtQ065jB16c9qMVHc1jcsdCKjJcGZvMMjuj7x5hkd0feYenv/jWf9mOnu/jWf8AZmHvdH/pz/8Apfke4n1OjTTafWjJjXyos50eKfWu8xAqaNedCqqtJ4a4E2srDL50U5W9lE1Gb64swywslPbo9/BonTae6ezMqyb0tuln7y4le6ddPbuaTjLm4NYfsfD2ENmS4MzVafa3vY1BdvHdmPNWPFxhRxa9J79ZinbbP07JSXc2dDBc3lmqLo2tHGeMpPMvZyXs4nqjLOWwACoJl2o/Rsf7vwRCcuUmknJtLqTfUcG/qV4r24dZLGUl7kl+BGEdlYAANAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAf/9k=" alt="CarConnect.lk" style="height:32px;margin-bottom:20px;filter:brightness(0) invert(1)">
+        <p>Sri Lanka's premium automotive marketplace — connecting serious sellers with verified buyers for a faster, smarter, stress-free vehicle selling experience.</p>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/carconnect.lk" target="_blank">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/@carconnect.lk" target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.79 1.52v-3.4a4.85 4.85 0 01-1.02-.12z"/></svg>
+          </a>
+          <a href="https://wa.me/+94777150066" target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#" onclick="showPage('home')">Home</a></li>
+          <li><a href="#" onclick="showPage('sell')">Sell Your Vehicle</a></li>
+          <li><a href="#" onclick="showPage('inventory')">Browse Inventory</a></li>
+          <li><a href="https://www.carconnect.lk/about.html" target="_blank">Our Story</a></li>
+          <li><a href="#" onclick="scrollToContact()">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Our Services</h4>
+        <ul>
+          <li><a href="#">Vehicle Valuation</a></li>
+          <li><a href="#">Direct Imports</a></li>
+          <li><a href="#">Vehicle Inspection</a></li>
+          <li><a href="#">Buyer Matching</a></li>
+          <li><a href="#">Documentation Help</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul class="footer-contact">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 012 1.18 2 2 0 014 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92v2z"/></svg>
+            <a href="tel:+94777150066" style="color:rgba(255,255,255,0.6)">+94 777 150 066</a>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Colombo, Sri Lanka</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>Mon–Fri: 9:00am–6:00pm</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom" id="contact">
+      <p>© 2025 CarConnect.lk — All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/+94777150066?text=Hi%20CarConnect%2C%20I%27m%20interested%20in%20your%20services" target="_blank" class="whatsapp-float">
+  <div class="whatsapp-pulse"></div>
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- MOBILE STICKY CTA -->
+<div class="mobile-cta-bar">
+  <a href="tel:+94777150066" class="btn btn-outline" style="padding:12px;font-size:12px;justify-content:center">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 012 1.18 2 2 0 014 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92v2z"/></svg>
+    Call Us
+  </a>
+  <a href="#" onclick="showPage('sell')" class="btn btn-primary" style="flex:2;padding:12px;font-size:12px;justify-content:center">Sell My Car — Free</a>
+</div>
+
+<script>
+// ===== DATA =====
+const vehicles = [
+  {id:1, title:'Land Rover Range P400 LWB Autobiography 2025', make:'Land Rover', type:'SUV', price:145000000, year:2025, mileage:180, fuel:'Petrol', transmission:'Automatic', color:'Santorini Black', seats:5, engine:'3.0L P400', featured:true, badge:'New Arrival',
+   img:'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?w=800&q=80',
+   imgs:['https://images.unsplash.com/photo-1617814076367-b759c7d7e738?w=800&q=80','https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=800&q=80','https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=800&q=80','https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=800&q=80']},
+  {id:2, title:'Mercedes-Benz C200 AMG Premium+ 2019', make:'Mercedes-Benz', type:'Sedan', price:24500000, year:2019, mileage:74500, fuel:'Petrol', transmission:'Automatic', color:'Obsidian Black', seats:5, engine:'2.0L Turbo', featured:true, badge:'Featured',
+   img:'https://images.unsplash.com/photo-1618843479619-f3d0d81e4d10?w=800&q=80',
+   imgs:['https://images.unsplash.com/photo-1618843479619-f3d0d81e4d10?w=800&q=80','https://images.unsplash.com/photo-1549399542-7e3f8b79c341?w=800&q=80','https://images.unsplash.com/photo-1502161254066-6c74afbf07aa?w=800&q=80','https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80']},
+  {id:3, title:'BMW X5 xDrive40i M Sport 2021', make:'BMW', type:'SUV', price:52000000, year:2021, mileage:32000, fuel:'Petrol', transmission:'Automatic', color:'Alpine White', seats:5, engine:'3.0L B58', featured:false, badge:'Hot Deal',
+   img:'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
+   imgs:['https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80','https://images.unsplash.com/photo-1542362567-b07e54358753?w=800&q=80','https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=800&q=80','https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=800&q=80']},
+  {id:4, title:'Audi Q7 Quattro 2L 2017', make:'Audi', type:'SUV', price:18500000, year:2017, mileage:71300, fuel:'Petrol', transmission:'Automatic', color:'Glacier White', seats:7, engine:'2.0L TFSI', featured:false, badge:null,
+   img:'https://images.unsplash.com/photo-1606016159991-dfe4f2746ad5?w=800&q=80',
+   imgs:['https://images.unsplash.com/photo-1606016159991-dfe4f2746ad5?w=800&q=80','https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80','https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800&q=80','https://images.unsplash.com/photo-1503736334956-4c8f8e4733e5?w=800&q=80']},
+  {id:5, title:'Toyota Hilux Invincible 2022', make:'Toyota', type:'Pickup', price:28000000, year:2022, mileage:45000, fuel:'Diesel', transmission:'Automatic', color:'Titanium Silver', seats:5, engine:'2.8L Diesel', featured:true, badge:'Popular',
+   img:'https://images.unsplash.com/photo-1559416523-140ddc3d238c?w=800&q=80',
+   imgs:['https://images.unsplash.com/photo-1559416523-140ddc3d238c?w=800&q=80','https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=800&q=80','https://images.unsplash.com/photo-1543465077-db45d34b88a5?w=800&q=80','https://images.unsplash.com/photo-1577495508048-b635879837f1?w=800&q=80']},
+  {id:6, title:'Hyundai Santa Fe 2025', make:'Hyundai', type:'SUV', price:38500000, year:2025, mileage:3750, fuel:'Petrol', transmission:'Automatic', color:'Onyx Black', seats:7, engine:'2.5L Turbo', featured:false, badge:'New',
+   img:'https://images.unsplash.com/photo-1571127236794-81c899f9f816?w=800&q=80',
+   imgs:['https://images.unsplash.com/photo-1571127236794-81c899f9f816?w=800&q=80','https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=800&q=80','https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=800&q=80','https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=800&q=80']},
+  {id:7, title:'Honda Civic EX 2019', make:'Honda', type:'Sedan', price:11500000, year:2019, mileage:18000, fuel:'Petrol', transmission:'Automatic', color:'Lunar Silver', seats:5, engine:'1.5L Turbo', featured:false, badge:null,
+   img:'https://images.unsplash.com/photo-1590362891991-f776e747a588?w=800&q=80',
+   imgs:['https://images.unsplash.com/photo-1590362891991-f776e747a588?w=800&q=80','https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=800&q=80','https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80','https://images.unsplash.com/photo-1503736334956-4c8f8e4733e5?w=800&q=80']},
+  {id:8, title:'Audi Q3 S Line 2018', make:'Audi', type:'SUV', price:16000000, year:2018, mileage:127400, fuel:'Petrol', transmission:'Automatic', color:'Navarra Blue', seats:5, engine:'1.4L TFSI', featured:false, badge:null,
+   img:'https://images.unsplash.com/photo-1550355291-bbee04a92027?w=800&q=80',
+   imgs:['https://images.unsplash.com/photo-1550355291-bbee04a92027?w=800&q=80','https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800&q=80','https://images.unsplash.com/photo-1606016159991-dfe4f2746ad5?w=800&q=80','https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80']},
+  {id:9, title:'Land Rover Range Vogue SDV8 2014', make:'Land Rover', type:'SUV', price:32000000, year:2014, mileage:79000, fuel:'Diesel', transmission:'Automatic', color:'Corris Grey', seats:5, engine:'4.4L V8 Diesel', featured:false, badge:null,
+   img:'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=800&q=80',
+   imgs:['https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=800&q=80','https://images.unsplash.com/photo-1617814076367-b759c7d7e738?w=800&q=80','https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=800&q=80','https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=800&q=80']},
+];
+
+let currentInventory = [...vehicles];
+let currentDetailId = null;
+
+function formatPrice(p){
+  if(p>=1000000) return 'LKR '+( p/1000000).toFixed(1)+'M';
+  return 'LKR '+p.toLocaleString();
+}
+
+function createVehicleCard(v, showDetail=true){
+  return `<div class="vehicle-card fade-up" onclick="${showDetail?'openDetail('+v.id+')':''}" style="cursor:${showDetail?'pointer':'default'}">
+    <div class="vehicle-img">
+      <img src="${v.img}" alt="${v.title}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80'">
+      ${v.badge?'<span class="vehicle-badge ${v.featured?"featured":""}">${v.badge}</span>':''}
+    </div>
+    <div class="vehicle-info">
+      <h3>${v.title}</h3>
+      <div class="vehicle-price">${formatPrice(v.price)}</div>
+      <div class="vehicle-meta">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>${v.year}</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>${(v.mileage/1000).toFixed(0)}k km</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17M17 13v4a2 2 0 002 2H5a2 2 0 002-2v-4"/></svg>${v.fuel}</span>
+      </div>
+    </div>
+    <div class="vehicle-actions">
+      <button onclick="event.stopPropagation();openDetail(${v.id})" class="btn btn-dark">View Details</button>
+      <a href="https://wa.me/+94777150066?text=Hi%20CarConnect%2C%20I%27m%20interested%20in%20the%20${encodeURIComponent(v.title)}" target="_blank" onclick="event.stopPropagation()" class="btn btn-primary" style="background:#25D366">
+        <svg viewBox="0 0 24 24" fill="currentColor" style="width:13px;height:13px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp
+      </a>
+    </div>
+  </div>`;
+}
+
+function renderFeatured(){
+  const el = document.getElementById('featured-grid');
+  if(!el) return;
+  const featured = vehicles.filter(v=>v.featured).slice(0,3);
+  el.innerHTML = featured.map(v=>createVehicleCard(v)).join('');
+  observeFadeUps();
+}
+
+function renderInventory(list){
+  const el = document.getElementById('inventory-grid');
+  if(!el) return;
+  document.getElementById('results-count').textContent = list.length;
+  if(list.length === 0){
+    el.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:80px 20px"><p style="font-size:18px;color:var(--gray-400);margin-bottom:16px">No vehicles found matching your criteria</p><button onclick="clearFilters()" class="btn btn-primary">Clear Filters</button></div>';
+    return;
+  }
+  el.innerHTML = list.map(v=>createVehicleCard(v)).join('');
+  observeFadeUps();
+}
+
+function filterInventory(){
+  const make = document.getElementById('filter-make').value;
+  const type = document.getElementById('filter-type').value;
+  const price = document.getElementById('filter-price').value;
+  const year = document.getElementById('filter-year').value;
+  const search = document.getElementById('filter-search').value.toLowerCase();
+  currentInventory = vehicles.filter(v=>{
+    if(make && v.make !== make) return false;
+    if(type && v.type !== type) return false;
+    if(price && v.price > parseInt(price)) return false;
+    if(year && v.year < parseInt(year)) return false;
+    if(search && !v.title.toLowerCase().includes(search) && !v.make.toLowerCase().includes(search)) return false;
+    return true;
+  });
+  renderInventory(currentInventory);
+}
+
+function sortInventory(by){
+  const sorted = [...currentInventory];
+  if(by==='price-low') sorted.sort((a,b)=>a.price-b.price);
+  else if(by==='price-high') sorted.sort((a,b)=>b.price-a.price);
+  else if(by==='mileage') sorted.sort((a,b)=>a.mileage-b.mileage);
+  else sorted.sort((a,b)=>b.year-a.year);
+  renderInventory(sorted);
+}
+
+function clearFilters(){
+  document.getElementById('filter-make').value='';
+  document.getElementById('filter-type').value='';
+  document.getElementById('filter-price').value='';
+  document.getElementById('filter-year').value='';
+  document.getElementById('filter-search').value='';
+  currentInventory=[...vehicles];
+  renderInventory(currentInventory);
+}
+
+function openDetail(id){
+  const v = vehicles.find(x=>x.id===id);
+  if(!v) return;
+  currentDetailId = id;
+  document.getElementById('d-price').textContent = formatPrice(v.price);
+  document.getElementById('d-title').textContent = v.title;
+  document.getElementById('d-subtitle').textContent = v.year + ' · ' + v.fuel + ' · ' + v.transmission;
+  document.getElementById('main-img').src = v.imgs[0];
+  document.getElementById('gallery-thumbs').innerHTML = v.imgs.map((img,i)=>`<div class="gallery-thumb ${i===0?'active':''}" onclick="changeMainImg('${img}',this)"><img src="${img}" alt="" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1555215695-3004980ad54e?w=400&q=80'"></div>`).join('');
+  document.getElementById('wa-inquiry').href = `https://wa.me/+94777150066?text=Hi%20CarConnect%2C%20I%27m%20interested%20in%20the%20${encodeURIComponent(v.title)}%20priced%20at%20${encodeURIComponent(formatPrice(v.price))}`;
+  const specs = [
+    {l:'Make',v:v.make},{l:'Year',v:v.year},{l:'Mileage',v:(v.mileage/1000).toFixed(0)+'k km'},
+    {l:'Engine',v:v.engine},{l:'Fuel Type',v:v.fuel},{l:'Transmission',v:v.transmission},
+    {l:'Body Type',v:v.type},{l:'Colour',v:v.color},{l:'Seats',v:v.seats}
+  ];
+  document.getElementById('specs-grid').innerHTML = specs.map(s=>`<div class="spec-item"><div class="spec-label">${s.l}</div><div class="spec-value">${s.v}</div></div>`).join('');
+  const similar = vehicles.filter(x=>x.id!==id && (x.make===v.make || x.type===v.type)).slice(0,3);
+  document.getElementById('similar-grid').innerHTML = similar.map(s=>createVehicleCard(s)).join('');
+  showPage('detail');
+}
+
+function changeMainImg(src, el){
+  document.getElementById('main-img').src = src;
+  document.querySelectorAll('.gallery-thumb').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+}
+
+// PAGE NAVIGATION
+function showPage(page){
+  document.querySelectorAll('.page-section').forEach(s=>s.classList.remove('active'));
+  document.getElementById('page-'+page).classList.add('active');
+  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
+  const navEl = document.getElementById('nav-'+page);
+  if(navEl) navEl.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(page==='inventory'){
+    renderInventory(currentInventory);
+  }
+  if(page==='home'){
+    renderFeatured();
+    initCounters();
+  }
+}
+
+function scrollToContact(){
+  document.getElementById('contact')?.scrollIntoView({behavior:'smooth'});
+}
+
+// NAVBAR SCROLL
+window.addEventListener('scroll',()=>{
+  const nav = document.getElementById('navbar');
+  if(window.scrollY > 40) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+});
+
+// MOBILE NAV
+function toggleMobileNav(){
+  document.getElementById('mobile-nav').classList.toggle('open');
+}
+
+// FORM
+function previewImages(e){
+  const files = e.target.files;
+  const preview = document.getElementById('img-preview');
+  preview.innerHTML = '';
+  Array.from(files).slice(0,10).forEach(file=>{
+    const reader = new FileReader();
+    reader.onload = ev=>{
+      const img = document.createElement('img');
+      img.src = ev.target.result;
+      img.className = 'preview-img';
+      preview.appendChild(img);
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
+function submitSellForm(){
+  const name = document.getElementById('f-name').value.trim();
+  const phone = document.getElementById('f-phone').value.trim();
+  const make = document.getElementById('f-make').value;
+  const model = document.getElementById('f-model').value.trim();
+  const year = document.getElementById('f-year').value;
+  const mileage = document.getElementById('f-mileage').value;
+  if(!name){alert('Please enter your full name');return}
+  if(!phone){alert('Please enter your phone number');return}
+  if(!make){alert('Please select vehicle make');return}
+  if(!model){alert('Please enter vehicle model');return}
+  if(!year){alert('Please enter year of manufacture');return}
+  if(!mileage){alert('Please enter mileage');return}
+  const msg = `Hi CarConnect! I want to sell my vehicle.\n\nName: ${name}\nPhone: ${phone}\nVehicle: ${year} ${make} ${model}\nMileage: ${parseInt(mileage).toLocaleString()} km\n\nPlease contact me!`;
+  // Send to WhatsApp
+  window.open(`https://wa.me/+94777150066?text=${encodeURIComponent(msg)}`,'_blank');
+  document.getElementById('sell-form').style.display='none';
+  document.getElementById('success-msg').style.display='block';
+}
+
+function submitInquiry(){
+  alert('Thank you! Our team will contact you shortly. For instant response, use the WhatsApp button above.');
+}
+
+// FADE UP OBSERVER
+function observeFadeUps(){
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}});
+  },{threshold:0.1,rootMargin:'0px 0px -50px 0px'});
+  document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+}
+
+// COUNT UP
+function initCounters(){
+  const counters = document.querySelectorAll('.count-up');
+  counters.forEach(c=>{
+    const target = parseInt(c.dataset.count);
+    const duration = 2000;
+    const start = performance.now();
+    const update = (now)=>{
+      const progress = Math.min((now-start)/duration,1);
+      const ease = 1-Math.pow(1-progress,3);
+      c.textContent = Math.round(ease*target).toLocaleString();
+      if(progress<1) requestAnimationFrame(update);
+    };
+    requestAnimationFrame(update);
+  });
+}
+
+// Hero stat count
+function initHeroStats(){
+  document.querySelectorAll('.hero-stat .num[data-count]').forEach(el=>{
+    const target = parseInt(el.dataset.count);
+    let current = 0;
+    const step = target/60;
+    const timer = setInterval(()=>{
+      current = Math.min(current+step, target);
+      el.textContent = Math.round(current);
+      if(current>=target) clearInterval(timer);
+    },30);
+  });
+}
+
+// INIT
+document.addEventListener('DOMContentLoaded',()=>{
+  renderFeatured();
+  renderInventory(vehicles);
+  observeFadeUps();
+  initHeroStats();
+  setTimeout(initCounters, 800);
+  // Re-observe on scroll
+  window.addEventListener('scroll', observeFadeUps, {passive:true});
+});
+</script>
+</body>
+</html>
