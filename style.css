@@ -101,8 +101,8 @@ ul{list-style:none}
 .trust-item svg{color:var(--red);flex-shrink:0}
 
 /* SECTION PADDING */
-.section{padding:100px 0}
-.section-sm{padding:60px 0}
+.section{padding:50px 0}
+.section-sm{padding:30px 0}
 .section-dark{background:var(--navy)}
 .section-gray{background:var(--off-white)}
 
