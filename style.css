@@ -272,19 +272,20 @@ select.form-control{appearance:none;background-image:url("data:image/svg+xml,%3C
 .similar-section{padding:80px 0;background:var(--off-white)}
 
 /* FOOTER */
-footer{background:pink;padding:80px 0 0; color: black;}
+footer{background: white;padding:80px 0 0; color: black;}
 .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;padding-bottom:60px;border-bottom:1px solid rgba(11, 233, 45, 0.08)}
+.footer-grid p{font-weight: 600}
 .footer-brand img{height:32px;margin-bottom:20px;filter:brightness(0) invert(1)}
 .footer-brand p{font-size:14px;color:rgba(255,255,255,0.5);line-height:1.7;margin-bottom:24px;max-width:280px}
 .footer-social{display:flex;gap:10px}
-.footer-social a{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.6);transition:var(--transition)}
+.footer-social a{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;color: black;transition:var(--transition)}
 .footer-social a:hover{background:var(--red);color:#fff}
 .footer-social svg{width:16px;height:16px}
 .footer-col h4{font-size:19px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color: black;margin-bottom:20px}
 .footer-col ul li{margin-bottom:10px}
 .footer-col ul a{font-size:17px;color:Black;transition:var(--transition);font-weight: 600;}
 .footer-col ul a:hover{color: Red;padding-left:4px}
-.footer-contact li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:rgba(255,255,255); margin-bottom:14px}
+.footer-contact li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color: black; margin-bottom:14px}
 .footer-contact svg{width:16px;height:16px;color: black;flex-shrink:0;margin-top:3px}
 .footer-bottom{padding:20px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
 .footer-bottom p{font-size:12px;color:rgba(255,255,255,0.3)}
